@@ -1,6 +1,6 @@
 ---
 title: "Oh no, your jolly boat hit a reef!"
-image: https://jollydata.blog/assets/images/windrose_black.png
+image: https://jollydata.blog/assets/images/windrose_yellow.png
 about: 
   template: jolla
 comments: false
