@@ -4,5 +4,25 @@
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
 freeze: true
 
-# Enable banner style title blocks
-title-block-banner: true
+# Enable CC licence appendix
+license: "CC BY"
+
+# Default for table of contents
+toc: true
+toc-title: On this page
+toc-location: left
+
+# Default knitr options
+execute:
+  echo: true
+  message: false
+  warning: false
+
+# Default author
+author:
+  - name: Christian Gebhard 
+    url: https://twitter.com/c_gebhard
+    orcid: 0000-0002-8792-565X
+
+# Default fields for citation
+citation: true
