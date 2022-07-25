@@ -1,0 +1,841 @@
+---
+title: "When Not in Rome..."
+subtitle: |
+  ...still do as the Romans do. One of the most famous amphitheaters is the *Colosseum* in Rome. But the Roman Empire built many more outside of its capital across Europe and around the Mediterranian Sea. This post explores 268 of these historic sites and includes a dashboard for interactive exploration.
+date: "2022-07-08"
+categories: [R, EDA, tables, maps, interactive]
+image: assets/preview.jpg
+image-alt: "A photograph of seating rows in an ancient amphitheater. The stone rows and steps take up the whole frame leading from the lower right to the upper left in a curve."
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = "#>",
+                      fig.retina = 2, # Control using dpi
+                      fig.width = 6,  # generated images
+                      fig.align = "center",
+                      dpi = 72, 
+                      out.width = "100%",
+                      dev = "png",
+                      dev.args = list(png = list(type = "cairo-png")),
+                      optipng = "-o1 -quiet")
+
+xaringanExtra::use_panelset()
+```
+
+![Photo by [Tomas Robertson](https://unsplash.com/@tomasrobertson?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/amphitheater?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](assets/preview.jpg)
+
+## Introduction
+
+Roman amphitheaters are monumental historic buildings, dating back to the antique times of the Roman Empire. They were mainly used for entertainment, hosting gladiator combats or *venationes* (animal hunts). 
+
+::::: {.panelset}
+
+::: {.panel}
+[On Amphitheaters]{.panel-name}
+
+One of the best known amphitheatres is the *Colosseum* in Rome, also known as the "Flavian Amphitheater". But over several centuries, the Romans built many more across their Empire. The name describes the architecture: the spectator seats (*théatron*) are arranged around or on both sides (*amphi*) of the arena in a circular or oval manner.
+
+
+:::
+
+::: {.panel}
+[Data Source]{.panel-name}
+
+The [dataset](https://github.com/roman-amphitheaters/roman-amphitheaters) comprises historic and geospacial data on 268 theaters^[that is at the time of writing. The dataset might have been updated in the meantime].
+
+#### Acknowledgements
+The data was composed and published by [Sebastian Heath](https://isaw.nyu.edu/people/faculty/isaw-faculty/sebastian-heath) from the INSTITUTE FOR THE STUDY OF THE ANCIENT WORLD at [NYU](https://www.nyu.edu). Thanks and credits go to Sebastian Heath, as he published the data under the "Unlicense", which allowed me to explore and analyse the set for this post.
+
+I stumbled upon this set in the great [Data is Plural Newsletter](https://www.data-is-plural.com/archive/2022-06-08-edition/) by [Jeremy Singer-Vine](https://www.jsvine.com).
+
+
+
+:::
+
+::: {.panel}
+[Further Sources]{.panel-name}
+
+For this post I read articles in several online resources, including
+
+- [The Pleiades](https://pleiades.stoa.org)
+- [https://amphi-theatrum.de/](https://amphi-theatrum.de/)
+- [Livius](https://www.livius.org)
+- [Wikipedia](https://en.wikipedia.org/wiki/Roman_amphitheatre)
+
+:::
+
+::: {.panel}
+[Packages]{.panel-name}
+
+```{r, echo=TRUE}
+library(tidyverse, quietly = TRUE)
+library(crosstalk)
+library(leaflet)
+library(reactable)
+library(reactablefmtr)
+library(ggdist)
+library(ggiraph)
+library(ggtext)
+library(MetBrewer)
+library(geomtextpath)
+
+library(showtext)
+font_add_google("Open Sans")
+font_add_google("Bitter")
+showtext_auto()
+
+
+```
+
+
+:::{.callout-tip collapse="true"}
+## Expand for Session Info
+```{r, echo = FALSE}
+library(sessioninfo)
+# save the session info as an object
+pkg_sesh <- session_info(pkgs = "attached")
+# get the quarto version
+quarto_version <- system("quarto --version", intern = TRUE)
+# inject the quarto info
+pkg_sesh$platform$quarto <- paste(
+  system("quarto --version", intern = TRUE), 
+  "@", 
+  quarto::quarto_path()
+  )
+# print it out
+pkg_sesh
+```
+
+:::
+
+
+:::
+
+:::::
+
+
+## Exploratory Data Analysis
+Next, let's read the actual amphitheater data and have a look at it. 
+
+```{r, code_folding="load amphitheater data"}
+# read data and drop columns that won't be used
+amphi <- readr::read_csv("https://raw.githubusercontent.com/roman-amphitheaters/roman-amphitheaters/d1b2cb2b401e583cc13837451ed403b42e8fceae/roman-amphitheaters.csv") |> 
+  select(
+    title, label, 
+    pleiades, buildingtype, 
+    chronogroup, capacity, 
+    modcountry, 
+    arenamajor, arenaminor, 
+    extmajor, extminor, 
+    longitude, latitude, elevation)
+
+```
+
+If you want to see more than the summary, check out the code and output below deck. In there I cover extreme values, distribution of variables and check for spurious correlations.
+
+::::: {.panelset}
+
+::: {.panel}
+[EDA Summary]{.panel-name}
+
+There are `r nrow(amphi)` entries in total and I selected `r ncol(amphi)` columns of interest.
+
+#### Missing Data
+There are no missing values for the name and location data including coordinates and in which modern country the arena is located now.
+Other interesting measurements do have missing data unfortunately:
+
+- external theater measurements: 96 missing (35.8%)
+- arena measurements: 116 missing (43.3%)
+- spectator capacity: 139 missing (51.9%)
+
+#### Extreme Values
+
+The **lowest** amphitheater is located in today's Israel at -134m,  the **highest** at 1170m in Algeria.
+The one furthest north is located in Newstead (UK), the arena furthest south at Eleutheropolis (Israel).
+
+
+:::
+
+::: {.panel}
+[Below Deck]{.panel-name}
+
+The following steps were performed to check the validity of the dataset. As this stays below deck, I used base R plots and default colors mostly.
+
+#### Get an idea of the data
+```{r, code_folding="check the data types: all columns seem to be fine"}
+dplyr::glimpse(amphi)
+```
+
+```{r, code_folding="check head and tail", collapse=FALSE}
+head(amphi)
+tail(amphi)
+```
+
+
+```{r, code_folding="check variable extremes, quantiles and missing data"}
+summary(amphi)
+```
+
+```{r, code_folding="check categorical variables"}
+dplyr::count(amphi, buildingtype, sort = TRUE)
+dplyr::count(amphi, chronogroup, sort = TRUE)
+dplyr::count(amphi, modcountry, sort = TRUE)
+
+```
+
+
+#### Distribution of numeric variables
+
+```{r}
+hist(amphi$capacity)
+hist(amphi$arenamajor)
+hist(amphi$arenaminor)
+hist(amphi$extmajor)
+hist(amphi$extminor)
+hist(amphi$elevation)
+```
+
+#### Extreme Values
+One value caught my eye: the lowest elevation is more than 100m *below* sea level, which seems odd on first thought. A quick lookup in [pleiades](https://pleiades.stoa.org/places/678378) and [wikipedia](https://en.wikipedia.org/wiki/Beit_She'an) however confirms, that the Roman theater of Scythopolis in today's 'Beit She'an' lies below sea level within the Jordan Rift Valley.
+
+The highest located amphitheater is located in today's Algeria, called 'Amphitheater at Lambaesis'.
+
+
+#### Correlation patterns
+
+Most of the following variable correlations do not make sense in the real world, but this is intended to check for spurious correlations.
+The strong correlations of external measurements, arena measurements and capacity seem quite plausible.
+
+```{r, code_folding="Plot correlation matrix"}
+# select numeric columns
+amphi.num <- dplyr::select_if(amphi, is.numeric)
+
+# calculate correlation matrix
+amphi.corr <- cor(
+  amphi.num,
+  use = "pairwise.complete.obs"
+)
+
+# plot correlation matrix
+corrplot::corrplot(amphi.corr, "circle")
+```
+
+There is a slight negative correlation between the elevation and the theater measurements, which I cannot explain at this time. To check for visually apparent patterns, we'll add a scatterplot matrix including the columns that have a Spearman's $\rho > 0.1$.
+
+```{r, fig.asp=1}
+amphi.num |> 
+  select(-c(longitude, latitude, arenaminor)) |> 
+  plot()
+```
+
+
+:::
+
+:::::
+
+### External and Internal Measures of the Amphitheaters
+Next up is an analysis of the size of the theaters. Available in the dataset are outer measures and arena size. The amphitheaters usually were of oval shape, so there is a longest possible and a shortest possible axis. Another measure is the capacity of spectators, which will be looked at later.
+
+The buildings and arenas were not always circles. For the calculation of the area we'll assume, that the shapes are perfect ellipses^[The area A is thus: $A=a\cdot b\cdot\pi$, where $a$ is the half major axis, $b$ is the half minor axis].
+
+As preliminary step I derived several variables from the existing columns, such as area and measurements relative to the Colosseum in Rome. The values were stored in `amphi.measures`. Check out the code below deck, if you like.
+
+::::: {.panelset}
+
+::: {.panel}
+[Summary]{.panel-name}
+
+The amphitheater with the largest arena area is located at Utica in Tunisia (the area is given in $m^2$). The *Colosseum*, officially called the "Flavian Amphitheater at Rome", ranks on place 6 in this category: 
+
+```{r, echo=FALSE, ref.label="measurements"}
+
+```
+
+
+```{r, code_folding=TRUE}
+amphi.measures |> 
+  arrange(desc(arenaarea)) |> 
+  head() |> 
+  select(title, arenaarea, modcountry)
+```
+
+On the other hand, the *Colosseum* could -- by far -- harbor the largest audience:
+
+```{r, code_folding=TRUE}
+amphi.measures |> 
+  arrange(desc(capacity)) |> 
+  head() |> 
+  select(title, capacity, modcountry)
+
+```
+
+To visualize how many people could see an event in the *Colosseum*, compared to the other venues, we'll plot the distribution in a raincloud plot. The majority of theaters lie between 5000 to 20000 visitors.
+
+```{r, code_folding=TRUE, fig.width=6, fig.height=4, fig.cap="Distribution of maximum visitor seats at the Amphitheaters across the Roman Empire. The 'Flavian Amphitheater at Rome', also known as the 'Colosseum', is the largest in terms of spectator seats at ~50000. You can find the points' names in their tooltips.", fig.alt="Raincloud plot presenting the distribution of maximum visitor seats at the Amphitheaters across the Roman Empire. The 'Flavian Amphitheater at Rome', also known as the 'Colosseum', is the largest in terms of spectator seats at ~50000. The majority of venues had seats for less than 20000 spectators."}
+
+
+p <- amphi.measures |> 
+  mutate(
+    is_colosseum = label == "Colosseum",
+    psize = ifelse(is_colosseum, 3, 0.5)
+  ) |> 
+    ggplot() +
+  aes(x=1, y = capacity) +
+  ggdist::stat_halfeye(
+    fill = "#845d29",
+    width = .2, 
+    .width = 0, 
+    justification = -2.5, 
+    point_colour = NA,
+    alpha = 0.85) + 
+  ggdist::stat_pointinterval(
+    color = "black",
+    position = position_nudge(x = 0.45),
+  ) +
+  geom_point_interactive(
+    aes(tooltip = title, color = is_colosseum, size = psize),
+    # size = 2,
+    alpha = .4,
+    position = position_jitter(
+      seed = 753, width = .4
+    )
+  ) +
+  coord_flip() +
+  scale_color_met_d("Isfahan1") +
+  theme_classic() +
+  labs(
+    title = "Visitor Capacity of Roman Amphitheaters",
+    subtitle = "The <span style='color:#178f92; weight: bold;'>Colosseum in Rome</span> is the largest venue with 50k seats.<br>The majority of theaters could fit between 5k and 20k spectators.",
+    y = "Visitor capacity",
+    caption = "dataviz by @c_gebhard on jollydata.blog | 2022<br>Data by Sebastian Heath, Institute for the Study of the Ancient World, NYU"
+  ) +
+  theme(
+    axis.line.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
+    panel.grid.major.x = element_line(color = "#DDDDDD"),
+    plot.title = element_markdown(family = "Bitter", size = 12, face = "bold"),
+    plot.subtitle = element_markdown(size = 10),
+    plot.caption = element_markdown(family = "Bitter", size = 8, lineheight = 1.2),
+    legend.position = "none"
+  )
+
+girafe(
+  ggobj = p,
+  height_svg = 4
+  )
+
+
+```
+
+<!-- The shape, as noted above usually was oval, not circular. The most extreme elliptic shape is  -->
+
+```{r,eval=FALSE, include=FALSE, fig.cap="The only circular arena is located in the Amphitheater at Tharros (western Sardinia)"}
+
+ggplot(amphi.measures) +
+  aes(
+    x = arenaminor,
+    y = arenamajor
+  ) +
+  geom_point() +
+  geom_abline(a = 0, b = 1, col = "red") +
+  coord_fixed(
+    ylim = c(0, 110),
+    xlim = c(0, 110)
+  ) +
+  theme_bw() +
+  
+
+```
+
+:::
+
+::: {.panel}
+[Below deck]{.panel-name}
+
+```{r, code_folding="Filter Colosseum values"}
+filter(amphi, label == "Colosseum") |> 
+  select(label, arenamajor, arenaminor, extmajor, extminor, capacity) |>
+  print()
+
+```
+
+```{r measurements, eval=FALSE}
+# calculate different measures
+amphi.measures <- amphi |> 
+  mutate(
+    # measurements
+    a.frac = arenamajor/arenaminor, # comparison of axes
+    a.rel.major = arenamajor / 83,  # relative to Colosseum
+    a.rel.minor = arenaminor / 48,  # relative to Colosseum
+    e.frac = extmajor/extminor,     # comparison of axes
+    e.rel.major = extmajor / 189,   # relative to Colosseum
+    e.rel.minor = extminor / 156,   # relative to Colosseum
+    
+    # capacity 
+    cap.rel = capacity / 50000,
+    
+    # area
+    extarea = 0.5*extmajor * 0.5*extminor * pi,
+    arenaarea = 0.5 * arenamajor * 0.5 * arenaminor * pi,
+    
+  )
+```
+
+:::
+
+:::::
+
+
+### The Roman Amphitheaters across the Centruries
+
+The dataset ranges from the republican era (starting around the year 70 BC) until the mid 4th century AD. The construction dates given in the dataset are not exactly specified on a year-level. This is understandable, as there might not be exact dates written on records or the cornerstones. Dating might rely on a combination architectural characteristics, historic texts and records. The diagram below displays the time scales of the epochs used in this dataset.
+
+```{r, code_folding=TRUE, fig.height=7, fig.width=6, fig.cap="Chronological groups used in the dataset, assigned to the theaters. There is considerable overlap, especially due to unspecific groups such as 'imperial'. Other epochs, such as 'Caesarean' or 'Neronian' are quite concise.", fig.alt="A gantt-like plot of the chronological groups used in the dataset. The epochs are displayed as cascading horizontal lines, each spanning from the start date to the end date.  There is considerable overlap, especially due to unspecific groups such as 'imperial' which spans more than 200 years. Other epochs, such as 'Caesarean' or 'Neronian' are quite concise."}
+# read the dataset
+chrono <- readr::read_csv("https://raw.githubusercontent.com/roman-amphitheaters/roman-amphitheaters/d1b2cb2b401e583cc13837451ed403b42e8fceae/chronogrps.csv")
+
+# rearrange for plotting
+chrono_long <- chrono |> 
+  pivot_longer(cols = c(startdate, enddate), names_to = "date_type", values_to = "date")
+
+
+ggplot(chrono_long) +
+  aes(
+    x = reorder(id, date, decreasing = TRUE),
+    y = date
+  ) +
+  geom_textline(
+    aes(
+      label = id,
+      color = reorder(id, date, decreasing = TRUE)
+      ),
+    vjust = -0.4,
+    hjust = 0,
+    linewidth = 3,
+    size = 4
+  ) +
+  scale_color_manual(values = met.brewer("Isfahan1", 18, type = "continuous", direction = -1)) +
+  scale_y_continuous(limits = c(-100, 400)) +
+  coord_flip() +
+  labs(
+    y = "Year",
+    title = "Chronological Groups",
+    subtitle = "The dataset uses the epochs shown below to date the amphitheaters. There is<br>considerable overlap, as some span over 100 years.",
+    caption = "dataviz by @c_gebhard on jollydata.blog | 2022<br>Data by Sebastian Heath, Institute for the Study of the Ancient World, NYU"
+  ) +
+  theme_classic() +
+  theme(
+    axis.line = element_blank(),
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.ticks = element_blank(),
+    legend.position = "none",
+    text = element_text(family = "Open Sans", size = 12),
+    panel.grid.major.x = element_line(),
+    plot.title = element_markdown(family = "Bitter", size = 20, face = "bold"),
+    plot.subtitle = element_markdown(size = 16),
+    plot.caption = element_markdown(size = 12)
+  )
+
+
+```
+
+
+Which was the most prolific epoch, defined as 'most amphitheaters constructed'? This is difficult to say, as the chronological groups are relatively unspecific. There are two approaches, *both are 'history-agnostic'*. By that I mean, that I do not have any historic expert knowledge, nor did I do any research first. Both approaches are based on the data itself.
+
+#### Mean buildings per epoch
+A possible first approach is a mean construction count per year for each chronological group.
+
+::::: {.panelset}
+
+::: {.panel}
+[Top 6 chronological groups]{.panel-name}
+
+```{r, echo=FALSE, ref.label="epochal"}
+
+```
+
+```{r, code_folding=TRUE}
+# print top 6
+amphi.construct |> 
+  select(chronogroup, n_amphi, duration, amphi_per_year) |> 
+  head()
+```
+
+:::
+
+::: {.panel}
+[Below deck]{.panel-name}
+
+```{r epochal, eval=FALSE}
+# calculate epoch duration
+chrono.duration <- chrono |> 
+  mutate(
+    duration = enddate - startdate
+  ) 
+
+# count constructions per chronogroup and join the duration
+amphi.duration <- amphi |> 
+  count(chronogroup) |> 
+  left_join(chrono.duration, by = c("chronogroup" = "id")) |> 
+  rename(n_amphi = n)
+
+# calculate constructions per epoch
+amphi.construct <- amphi.duration |> 
+  mutate(amphi_per_year = n_amphi / duration) |> 
+  arrange(desc(amphi_per_year))
+```
+
+:::
+
+:::::
+
+The most 'prolific' epoch in this view would be the 'flavian' epoch with 0.889 amphitheaters built per year (see `amphi_per_year` in the table above).^[The *Colosseum*, aka the 'Flavian Amphitheater' was built between 72 and 80 AD and falls into this epoch.]
+The problem with this approach is the overlapping of several groups. Theaters built in the flavian age would in reality also count as being built e.g. during the 'late first century' or partially in the 'late first early second century'. The dataset however cannot represent this, as each amphitheater is only assigned one of the chronological groups.
+
+#### Yearly approximation
+The second approach tackles the limitation of the previous attempt by summing the average constructions per year of all epochs on a yearly scale. The key assumption here is a uniform distribution^[https://en.wikipedia.org/wiki/Discrete_uniform_distribution] of the constructions within each epoch. In other words, we assume, that the finalization of amphitheaters is evenly spread across all years of an epoch. The necessary data preparation can be found below deck.
+
+::::: {.panelset}
+
+::: {.panel}
+[Cumulative]{.panel-name}
+
+```{r, echo=FALSE, ref.label="cumulative"}
+
+```
+
+```{r, code_folding="Plot code", fig.height=5, fig.width=6, fig.cap="Approximation of cumulative constructions of amphitheaters across the entire Roman Empire. The most prolific era, shown as the steepest slope in this graph, was the late first century, followed by the second century. There is a gap visible between 32 and 27 BC for which no entries are available in the dataset."}
+ggplot(amphi.years.cumul) +
+  aes(x = year, y = y_cumsum) +
+  geom_point(
+    size = 0.5,
+    color = "#178f92"
+  ) +
+  labs(
+    x = "Year",
+    y = "Approximated Number of Amphitheaters",
+    title = "Cumulative Number of Roman Amphitheaters",
+    subtitle = "Approximation of the cumulative number of amphitheaters built across the<br>Roman Empire. The calculation assumes a uniform distribution of completion<br>dates across the reported epochs. The real construction dates were<br>very likely not as continuously distributed as shown here.",
+    caption = "dataviz by @c_gebhard on jollydata.blog | 2022<br>Data by Sebastian Heath, Institute for the Study of the Ancient World, NYU"
+  ) +
+  scale_x_continuous(
+    minor_breaks = seq(-100, 400, 20)
+  ) +
+  theme_classic() +
+  theme(
+    panel.grid.minor.x = element_line(),
+    panel.grid.major.x = element_line(),
+    panel.grid.major.y = element_line(),
+    text = element_text(family = "Open Sans", size = 12),
+    plot.title = element_markdown(family = "Bitter", size = 20, face = "bold"),
+    plot.subtitle = element_markdown(size = 16),
+    plot.caption = element_markdown(size = 12),
+    plot.title.position = "plot"
+  ) +
+  annotate(
+    geom = "richtext",
+    label = "<span style='font-family: Open Sans; font-size: 12pt;'>During the <span style='color: #845d29;'><b>Flavian Epoch</b></span><br> the number of amphitheaters<br>grew fastest...</span>",
+    x = 60,
+    y = 150,
+    hjust = 1,
+    lineheight = 0.6,
+    fill = NA,
+    label.color = NA
+  ) +
+  annotate(
+    geom = "curve", x = 180, y = 150, xend = 150, yend = 160,
+    curvature = -.2, arrow = arrow(length = unit(1, "mm")),
+    color = "#845d29"
+  ) +
+  annotate(
+    geom = "richtext",
+    label = "<span style='font-family: Open Sans; font-size: 12pt;'>...a trend, which continued<br>steadily throughout the<br><span style='color: #845d29;'><b>Second Century</b></span>.</span>",
+    x = 185,
+    y = 140,
+    hjust = 0,
+    lineheight = 0.6,
+    fill = NA,
+    label.color = NA
+  ) +
+  annotate(
+    geom = "curve", x = 40, y = 120, xend = 75, yend = 90,
+    curvature = .3, arrow = arrow(length = unit(1, "mm")),
+    color = "#845d29"
+  )
+```
+
+:::
+
+::: {.panel}
+[Yearly Average]{.panel-name}
+
+```{r, code_folding="Plot code", fig.height=5, fig.width=6, fig.cap="Approximation of yearly constructions of amphitheaters across the entire Roman Empire. The most prolific era was the late first century, followed by the second century. An isolated "}
+ggplot(amphi.years.cumul) +
+  aes(x = year, y = y_cumul) +
+  geom_point(
+    size = 0.5,
+    color = "#178f92"
+  ) +
+  labs(
+    x = "Year",
+    y = "Constructed amphitheaters per year (average)",
+    title = "Completed Amphitheaters",
+    subtitle = "Approximation of the yearly number of completed amphitheaters across the<br>Roman Empire. The calculation assumes a uniform distribution of completion<br> dates across the reported epochs.",
+    caption = "dataviz by @c_gebhard on jollydata.blog | 2022<br>Data by Sebastian Heath, Institute for the Study of the Ancient World, NYU"
+  ) +
+  scale_x_continuous(
+    minor_breaks = seq(-100, 400, 20)
+  ) +
+  theme_classic() +
+  theme(
+    panel.grid.minor.x = element_line(),
+    panel.grid.major.x = element_line(),
+    panel.grid.major.y = element_line(),
+    text = element_text(family = "Open Sans", size = 12),
+    plot.title = element_markdown(family = "Bitter", size = 20, face = "bold"),
+    plot.subtitle = element_markdown(size = 16),
+    plot.caption = element_markdown(size = 12),
+    plot.title.position = "plot"
+  )
+```
+
+:::
+
+
+::: {.panel}
+[Below deck]{.panel-name}
+
+```{r cumulative, eval=FALSE}
+
+## add rows for all years between start and end date of an epoch:
+amphi.years <- amphi.construct |>
+  # create dummy rows for each year of an epoch (number equals duration)
+  uncount(duration) |> 
+  # group by epoch
+  group_by(chronogroup) |> 
+  # add row number (within each group) to epoch's start year to create a continuous year sequence for each epoch
+  # ranging from the start date to the end date
+  mutate(
+    year = startdate + 1:n() - 1
+  ) |> 
+  ungroup()
+
+## obtain yearly sums
+amphi.years.cumul <- amphi.years |> 
+  # group by year
+  group_by(year) |> 
+  # summarise all fractional yearly amphitheaters of all epochs in a given year
+  summarise(y_cumul = sum(amphi_per_year)) |> 
+  # calculate the cumulative sum over the years
+  arrange(year) |> 
+  mutate(
+    y_cumsum = cumsum(y_cumul)
+  )
+```
+
+```{r}
+# check if all yearly fractional amphitheaters over the complete time span
+# matches the number of amphitheaters in the dataset
+sum(amphi.years.cumul$y_cumul)
+```
+
+:::
+
+
+:::::
+
+
+### Where are the Amphitheaters located now?
+In the final section of the exploratory analysis, we'll see where the Romans built the most theaters.
+
+```{r}
+amphi |> 
+  count(modcountry, sort = T) |> 
+  head(10)
+```
+
+By far, the Romans built most theaters on their "home turf" (105 in total), which is now Italian territory. France follows on the list with 36, Tunisia with 29. Spain and the UK each have 15 amphitheaters on record.
+
+All in all the Romans left their cultural mark (in terms of amphitheaters) in `r nrow(distinct(amphi, modcountry))` countries.
+
+## Dashboard: Explore the Data by Yourself
+This section is intended for you, the reader, to explore the data by yourself.^[Also: I wanted to learn how to build interactive 'dashboards' that run client-side without the need to have a `{shiny}` server in the background.] The code for the interactive dashboard can be found below deck.
+
+::::: {.panelset}
+
+::: {.panel}
+[How to use]{.panel-name}
+
+
+
+In the top left, you can filter for one or more epochs or specify a range of spectators to filter the amphitheaters in the map and the table below. You can also search the table via the searchbox on the top right of the table. If you select one or more in the table, they will be highlighted on the map. On the other hand, if you explore the map and want want to see more information on the selected theater, just click on the button in the popup to jump to the entry in the table. (To get back  to the full table, simply empty the search box of the table.)
+
+:::
+
+::: {.panel}
+[Below Deck]{.panel-name}
+
+```{r dashboard, eval=FALSE}
+amphi.react <- amphi |> 
+  mutate(
+    title_html = paste0(
+      "<b>", .data$title, "</b><br><br>",
+      '<button onclick="Reactable.setSearch(\'amphi-table\',\'',
+      .data$title,
+      '\')">',
+      "Show in table",
+      '</button>'
+    ),
+    cap.fixed = ifelse(is.na(capacity), 0, capacity)
+  ) |> 
+  relocate(title, chronogroup, modcountry) |> 
+  arrange(desc(capacity))
+
+# Wrap data frame in SharedData
+crosstalk_data <- SharedData$new(amphi.react)
+
+
+### crosstalk epoch filter, a textbox that allows multiple selections of epochs
+epoch_filter <- filter_select(
+  id = "epoch",
+  label = "EPOCH",
+  sharedData = crosstalk_data,
+  group = ~ chronogroup
+)
+
+### crosstalk YEAR filter, a slider elemtn to select year-ranges
+cap_filter <- filter_slider(
+  id = "capacity",
+  label = "CAPACITY",
+  sharedData = crosstalk_data,
+  column = ~ cap.fixed,
+  ticks = TRUE,
+  dragRange = FALSE,
+  step = 1000,
+  sep = "",
+  width = "90%"
+)
+
+
+### Build the table
+amphi.table <- reactable(
+  crosstalk_data, 
+  theme = default(),
+  showSortIcon = TRUE,
+  searchable = TRUE,
+  selection = "multiple",
+  onClick = "select",
+  elementId = "amphi-table",
+  columns = list(
+    title_html = colDef(show = FALSE),
+    label = colDef(show = FALSE),
+    buildingtype = colDef(show = FALSE),
+    cap.fixed = colDef(show = FALSE),
+    latitude = colDef(show = FALSE),
+    longitude = colDef(show = FALSE),
+    pleiades = colDef(show = FALSE),
+    arenaminor = colDef(show = FALSE),
+    extminor = colDef(show = FALSE),
+    title = colDef(
+      name = "Name"
+    ),
+    chronogroup = colDef(
+      name = "Epoch"
+    ),
+    modcountry = colDef(
+      name = "Modern Country"
+    ),
+    capacity = colDef(
+      name = "Spectator Capacity",
+      cell = data_bars(
+          data = amphi.react,
+          fill_color = met.brewer("Isfahan1", 5),
+          background = '#F1F1F1',
+          min_value = 0,
+          max_value = 50000,
+          text_position = 'inside-end',
+          force_outside = c(0,20001),
+          number_fmt = scales::comma
+        )
+    ),
+    arenamajor = colDef(
+      name = "Arena major axis (m)",
+      maxWidth = 75,
+      cell = data_bars(
+          data = amphi.react,
+          fill_color = met.brewer("Isfahan1", 5),
+          background = '#F1F1F1',
+          min_value = 0,
+          max_value = 101,
+          text_position = 'inside-end',
+          force_outside = c(0,30),
+          number_fmt = scales::comma
+        )
+    ),
+    extmajor = colDef(
+      name = "External major axis (m)",
+      maxWidth = 75,
+      cell = data_bars(
+          data = amphi.react,
+          fill_color = met.brewer("Isfahan1", 5),
+          background = '#F1F1F1',
+          min_value = 0,
+          max_value = 189,
+          text_position = 'inside-end',
+          force_outside = c(0,70),
+          number_fmt = scales::comma
+        )
+    ),
+    elevation = colDef(
+      name = "Elevation (m)",
+      maxWidth = 75
+    )
+  )
+) |> 
+  add_source(
+    source = 'Data by Sebastian Heath, Institute for the Study of the Ancient World, NYU',
+    font_style = 'italic',
+    font_size = 12
+  )
+
+### display and arrange the widgets
+htmltools::div(
+  # style = "justify-content: center;",
+  bscols(
+    widths = c(4, 8),
+    list(
+      epoch_filter,
+      cap_filter
+    ),
+    leaflet(crosstalk_data) %>% addTiles() %>% addMarkers(popup = amphi.react$title_html)
+  )
+)
+
+htmltools::div(
+  amphi.table
+)
+
+```
+
+:::
+
+:::::
+
+:::{.column-screen-inset}
+
+```{r ref.label="dashboard", echo=FALSE}
+
+```
+
+:::
+
+## Final Thoughts and Comments
+After a long time I got back, to where I started the blog: grab an open dataset and do some exploration of the data. On the way I got more proficient in using `{crosstalk}` to link a map widget with an interactive table. There is still some room for improvement (e.g. I couldn't figure out how to select several locations on the map and filter for those in the table). If you enjoyed reading the post or even learned something as well, or know how to improve the article, feel free to leave a comment below.
+
+
+
