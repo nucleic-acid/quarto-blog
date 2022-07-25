@@ -1,19 +1,53 @@
 /*-- scss:defaults --*/
 
-// use litera as the base
-$theme: "flatly" !default;
+// use flatly as the base
+// $theme: "cosmo" !default;
 
 // import google fonts
 @import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap';
 @import 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap';
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Fira+Code&family=Roboto+Mono:wght@400&family=Sora:wght@300;400;500;600;700;800&family=Spline+Sans+Mono&display=swap');
 
-// use Atkinson Hyperlegible font if available
-$font-family-sans-serif:  "Sora", "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-size-root: 12pt;
+$headings-font-weight:  600 !default;
+// Code blocks
+$code-block-bg-alpha: -.8;
+
+// use Sora font if available
+$font-family-sans-serif:  "Sora", "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans !default;
+$font-family-monospace: 'Roboto Mono', 'Fira Code', monospace;
+
+// Colors
+$red: #e76254;
+$orange: #f7aa58;
+$yellow: #ffe6b7;
+$green: #56BB83;
+
 
 /*-- scss:rules --*/
 
 // litera is serif by default: revert to san-serif
 p {
   font-family: $font-family-sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.002em;
+}
+
+.quarto-title p {
+  font-size: 1.6rem;
+  letter-spacing: -0.004em;
+  font-weight: 300;
+}
+
+.figure-caption {
+  font-size: 0.8rem;
+}
+
+.listin-subtitle {
+  font-size: 0.9rem;
+}
+
+.update-list {
+  font-size: 0.9rem;
 }
