@@ -19,10 +19,17 @@ $font-family-sans-serif:  "Sora", "Atkinson Hyperlegible", -apple-system, BlinkM
 $font-family-monospace: 'Roboto Mono', 'Fira Code', monospace;
 
 // Colors
-// $red: #e76254;
-// $orange: #f7aa58;
-// $yellow: #ffe6b7;
-// $green: #56BB83;
+
+$red:     #d9534f !default;
+$yellow:  #ffc107 !default;
+$green:   #5cb85c !default;
+$cyan:    #5bc0de !default;
+
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+
 
 
 /*-- scss:rules --*/
