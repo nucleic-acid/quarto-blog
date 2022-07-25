@@ -2,18 +2,59 @@ project:
   type: website
 
 website:
-  title: "quarto-blog"
+  title: "jolly data"
+  description: "A personal blog on the exploration of open data and other adventures."
+  logo: assets/images/logo_dynamic.png
   navbar:
+    left: 
+      - text: "blog"
+        href: index.html
+      - text: "dataviz"
+        href: challenges.html
+      - text: "projects"
+        href: projects.html
     right:
-      - about.qmd
+      - text: "about"
+        href: about.html
       - icon: github
-        href: https://github.com/
+        href: https://github.com/nucleic-acid
       - icon: twitter
-        href: https://twitter.com
+        href: https://twitter.com/c_gebhard
+      - icon: mastodon
+        href: https://scicomm.xyz/web/@basepair#
+      - icon: rss
+        href: index.xml
+  site-url: https://jollydata.blog
+  twitter-card: true
+  open-graph: true
+  favicon: assets/images/logo_favicon.png
+  image: assets/images/logo_dynamic_hero.png
+  cookie-consent: 
+    policy-url: datenschutz.html
+  page-footer: 
+    left: Christian A. Gebhard {{< fa regular copyright >}} 2022<br>made with {{< fa heart >}}, {{< fa brands r-project >}}  and [quarto](https://quarto.org)
+    center: 
+      - text: Impressum
+        href: impressum.html
+      - text: Privacy / Datenschutz
+        href: datenschutz.html
+    right: <a rel="me" href="https://scicomm.xyz/@basepair">Mastodon</a>
+  comments: 
+    utterances:
+      repo: nucleic-acid/comments.jollydata.blog
+highlight-style: arrow
 format:
   html:
-    theme: jollydata.scss
+    theme: 
+      light: [litera, jollydata.scss]
+      dark: [superhero, jollydata.scss]
     css: styles.css
+    code-link: true
+    code-fold: true
+    code-tools: 
+      toggle: true
+      source: false
+    
 
 
 
