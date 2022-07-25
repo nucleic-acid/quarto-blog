@@ -1,0 +1,14 @@
+---
+title: "Oh no, your jolly boat hit a reef!"
+image: https://jollydata.blog/assets/images/windrose_black.png
+about: 
+  template: jolla
+comments: false
+---
+
+You're sunken **404** meters below the ocean surface and there's nothing to see here.^[Actually, in the real ocean, you could still see *something*. Light travels up to 1000m below the surface. So we'd be in the "dysphotic" or twilight zone, where there is still some sunlight, but brightness decreases rapidly. So let's be honest, it'd probably be pretty dark and not very comfy. If you're really interested in more details, [this website](https://oceanservice.noaa.gov/facts/light_travel.html) might interest you.]
+
+Go back to the [list of posts](https://jollydata.blog/blog) if you were looking for a specific blog entry, or use the search in the naviagtion menu to find the right article. Happy sailing!
+
+Send me a mail or hit me up on [Twitter](https://twitter.com/c_gebhard) or [Mastodon](https://scicomm.xyz/@basepair), if you think the website you were looking for should be here.
+
