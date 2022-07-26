@@ -1,0 +1,21 @@
+---
+title: "blog"
+listing:
+  contents: posts
+  sort: "date desc"
+  feed: true
+  sort-ui: true
+  type: default
+  categories: true
+  sort-ui: true
+  filter-ui: false
+  image-height: 170px
+  image-placeholder: "assets/logo_dynamic_hero.png"
+  fields: [image, title, subtitle, date, reading-time, categories]
+page-layout: full
+title-block-banner: false
+comments: false
+code-tools: false
+---
+
+
