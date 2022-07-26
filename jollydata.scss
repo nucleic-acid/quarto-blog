@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Fira+Code&family=Roboto+Mono:wght@400&family=Sora:wght@300;400;500;600;700;800&family=Spline+Sans+Mono&display=swap');
 
-$font-size-root: 12pt;
+$font-size-root: 12pt !default;
 $headings-font-weight:  600 !default;
 // Code blocks
 $code-block-bg-alpha: -.8;
@@ -23,18 +23,25 @@ $font-family-monospace: 'Roboto Mono', 'Fira Code', monospace;
 $red:     #d9534f !default;
 $yellow:  #ffc107 !default;
 $green:   #5cb85c !default;
-$cyan:    #5bc0de !default;
+$cyan:    #1bc7dc !default;
 
 $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
 
-
+// Button styling
+$btn-border-radius:           0em !default;
+$btn-border-radius-lg:        0em !default;
+$btn-border-radius-sm:        0em !default;
 
 /*-- scss:rules --*/
 
 // litera is serif by default: revert to san-serif
+body {
+  font-size: 1rem;
+}
+
 p {
   font-family: $font-family-sans-serif;
   font-weight: 400;
@@ -51,6 +58,10 @@ p {
   font-weight: 600;
 }
 
+div.quarto-about-jolla .about-link {
+  border-radius: 0;
+}
+
 .figure-caption {
   font-size: 0.8rem;
 }
@@ -61,4 +72,17 @@ p {
 
 .update-list {
   font-size: 0.9rem;
+}
+
+#welcome-message-title {
+  text-align: center;
+  font-weight: 600;
+}
+
+.card {
+  border-radius: 0;
+}
+
+.card h5 {
+  font-weight: 700;
 }
