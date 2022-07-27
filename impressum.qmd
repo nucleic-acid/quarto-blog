@@ -1,5 +1,6 @@
 ---
 title: "Impressum"
+comments: false
 ---
 
 ## Verantwortlicher nach §5 TMG
