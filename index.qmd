@@ -22,7 +22,7 @@ Hi, welcome to the jolly data blog!
 <div class="card mb-2">
 <div class="card-body">
 <h5 class="card-title">blog</h5>
-<p class="card-text">I enjoy exploring open datasets and pick up new {{< fa brands r-project >}} and {{< fa brands python >}} tricks on my way. I share what I discover and learn.</p>
+<p class="card-text">I enjoy exploring open datasets and pick up new {{< fa brands r-project >}} and {{< fa brands python >}} tricks on my way.<br>I share what I discover and learn.</p>
 <a href="posts.html" class="btn btn-info stretched-link">Start reading</a>
 </div>
 </div>
