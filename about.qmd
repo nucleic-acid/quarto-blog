@@ -1,0 +1,48 @@
+---
+title: "Christian A. Gebhard"
+about:
+  template: trestles
+  image: assets/images/pixelart2.png
+  links:
+    - icon: mastodon
+      url: "https://scicomm.xyz/\\@basepair"
+    - icon: twitter
+      url: "https://twitter.com/c_gebhard"
+    - icon: github
+      url: "https://github.com/nucleic-acid"
+    - icon: rss
+      url: blog.xml
+comments: false
+page-layout: full
+---
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-12}
+## {{< fa solid dna >}} About 
+I’m a medical doctor specializing in human genetics. Apart from that, I’m interested in open and reproducible research, data analysis and data visualization using open and reproducible tools, such as R and Python. This is my personal blog, where I like to share my views on topics, I’m excited about: statistics, exploring open data and the intersection of science communication, data visualization and informative illustrations.
+:::
+
+::: {.g-col-12 .g-col-md-6}
+## {{< fa solid heart >}} Interests 
+
+- Human Genetics
+- Data Analysis / Statistics / Data-Visualization
+- Typography 
+- Photography
+- Astronomy
+:::
+
+::: {.g-col-12 .g-col-md-6}
+## {{< fa solid graduation-cap >}}  Education
+
+- **Specializing in Human Genetics / Genetic Counseling**, since 2019
+- **Clinical Rotation**, 2018 - 2019  
+  *Paediatrics*
+- **Medical Doctorate**, 2018  
+  *Ludwig-Maximilians-University Munich*
+- **MD Degree / State Examination**, 2017  
+  *Technical University Munich*
+:::
+
+:::
