@@ -1,0 +1,25 @@
+---
+title: "data viz gallery"
+subtitle: |
+  A collection of datavisualizations created for challenges such as #TidyTuesday or the #30DayChartChallenge. Others resulted from personal data exploration projects found on this blog. The code can either be found in blog posts or on my github page.
+page-layout: full
+code-tools: false
+---
+
+::: {.column-screen}
+```{r}
+#| echo: false
+library(pixture)
+
+pixgallery(
+  list.files("assets/challenges_images", 
+             full.names=TRUE),
+  dim="350px",
+  gap = "10px"
+)
+
+```
+:::
+
+## Comments
+Do you like the visualizations? Seen anything you want to criticize? Leave a comment, I'd be happy to hear it!
