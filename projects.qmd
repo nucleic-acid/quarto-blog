@@ -32,5 +32,30 @@ page-layout: full
 </div>
 
 :::
+
+::: {.g-col-12 .g-col-md-6}
+
+<div class="card mb-3">
+<div class="card-body">
+<h3 class="card-title">30 Day Chart Challenge</h3>
+<h6 class="card-subtitle text-muted">2022 edition</h6>
+</div>
+<img src="assets/images/chartchallenge2022.png"/>
+<div class="card-body">
+<p class="card-text">A data visualization community-challenge. Each day in April has a new prompt for a visualization from five different categories: Comparisons, Distributions, Relationships, Timeseries, Uncertainties.<br>
+I contributed 20 visualizations, learned new technologies and enjoyed the great contributions of the many other participants.</p>
+</div>
+<div class="card-body">
+<a href="https://github.com/nucleic-acid/30DayChartChallenge_2022" class="card-link">My contributions' code</a>
+<a href="https://jollydata.blog/posts/2022-04-15-30daychartchallenge-interactive-plots/" class="card-link">Explore interactive plots</a>
+<a href="https://github.com/dominicroye/30DayChartChallenge_Edition2022" class="card-link">30DayChartChallenge on github</a>
+<a href="https://github.com/nucleic-acid/30DayChartChallenge_2022" class="card-link">and on Twitter</a>
+<br>
+<i>(image above by the 30DayChartCallenge Team)</i>
+</div>
+</div>
+
+:::
+
 :::
 
