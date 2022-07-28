@@ -10,7 +10,7 @@ website:
   navbar:
     left: 
       - text: "blog"
-        href: index.html
+        href: posts.html
       - text: "dataviz"
         href: challenges.html
       - text: "projects"
