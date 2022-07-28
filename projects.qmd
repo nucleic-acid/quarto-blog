@@ -1,0 +1,36 @@
+---
+title: "projects"
+comments: false
+page-layout: full
+---
+
+::: {.grid}
+::: {.g-col-12 .g-col-md-6}
+
+<div class="card mb-3">
+<div class="card-body">
+<h3 class="card-title">{namedropR}</h3>
+<h6 class="card-subtitle text-muted">R package, available on CRAN</h6>
+</div>
+<img src="assets/images/namedropR_slide.png"/>
+<div class="card-body">
+<p class="card-text">Enables R users to convert a bibliography into a collection of legible, well formatted banners to cite scientific literature on conference slides and posters. </p>
+<img src="https://github.com/nucleic-acid/namedropR/workflows/R-CMD-check/badge.svg" alt="R-CMD-check" style="max-width: 100%;"> <img src="https://cranlogs.r-pkg.org/badges/namedropR" alt="Monthly Downloads">
+<br><br>
+<h5>Key features:</h5>
+</div>
+<ul class="list-group list-group-flush">
+<li class="list-group-item">Output as PNG or HTML object</li>
+<li class="list-group-item">QR code to make citation scannable</li>
+<li class="list-group-item">Predefined styles and individual adjustments</li>
+</ul>
+<div class="card-body">
+<a href="https://nucleic-acid.github.io/namedropR/" class="card-link">Documentation</a>
+<a href="https://cloud.r-project.org/package=namedropR" class="card-link">View on CRAN</a>
+<a href="https://github.com/nucleic-acid/namedropR/" class="card-link">Source code</a>
+</div>
+</div>
+
+:::
+:::
+
