@@ -25,7 +25,7 @@ website:
       - icon: mastodon
         href: https://scicomm.xyz/web/@basepair#
       - icon: rss
-        href: index.xml
+        href: posts.xml
   site-url: https://jollydata.blog
   twitter-card: true
   open-graph: true

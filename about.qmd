@@ -11,7 +11,7 @@ about:
     - icon: github
       url: "https://github.com/nucleic-acid"
     - icon: rss
-      url: blog.xml
+      url: posts.xml
 comments: false
 page-layout: full
 ---
