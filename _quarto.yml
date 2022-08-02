@@ -2,6 +2,7 @@ project:
   type: website
   resources: 
     - "assets/challenges_images/"
+    - "assets/images/"
 
 website:
   title: "jolly data"
