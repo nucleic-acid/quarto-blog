@@ -10,43 +10,71 @@
 // @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Fira+Code&family=Roboto+Mono:wght@400&family=Sora:wght@300;400;500;600;700;800&family=Spline+Sans+Mono&display=swap');
 
 /* SORA UPRIGHT */
+/* sora-300 - latin */
 @font-face {
   font-family: 'Sora';
   font-style: normal;
   font-weight: 300;
-  src: url('assets/fonts/Sora-Light.ttf');
+  src: url('assets/fonts/sora-v10-latin-300.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('assets/fonts/sora-v10-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+       url('assets/fonts/sora-v10-latin-300.woff') format('woff'), /* Modern Browsers */
+       url('assets/fonts/sora-v10-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
 }
-
+/* sora-regular - latin */
 @font-face {
   font-family: 'Sora';
   font-style: normal;
   font-weight: 400;
-  src: url('assets/fonts/Sora-Regular.ttf'); /* IE9 Compat Modes */
+  src: url('assets/fonts/sora-v10-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('assets/fonts/sora-v10-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('assets/fonts/sora-v10-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('assets/fonts/sora-v10-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
 }
-
+/* sora-500 - latin */
 @font-face {
   font-family: 'Sora';
   font-style: normal;
   font-weight: 500;
-  src: url('assets/fonts/Sora-Medium.ttf'); /* IE9 Compat Modes */
+  src: url('assets/fonts/sora-v10-latin-500.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('assets/fonts/sora-v10-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('assets/fonts/sora-v10-latin-500.woff') format('woff'), /* Modern Browsers */
+       url('assets/fonts/sora-v10-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
 }
-@font-face {
-  font-family: 'Sora';
-  font-style: normal;
-  font-weight: 600;
-  src: url('assets/fonts/Sora-SemiBold.ttf'); /* IE9 Compat Modes */
-}
+/* sora-700 - latin */
 @font-face {
   font-family: 'Sora';
   font-style: normal;
   font-weight: 700;
-  src: url('assets/fonts/Sora-Bold.ttf'); /* IE9 Compat Modes */
+  src: url('assets/fonts/sora-v10-latin-700.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('assets/fonts/sora-v10-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('assets/fonts/sora-v10-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('assets/fonts/sora-v10-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
 }
+/* sora-800 - latin */
 @font-face {
   font-family: 'Sora';
   font-style: normal;
   font-weight: 800;
-  src: url('assets/fonts/Sora-ExtraBold.ttf'); /* IE9 Compat Modes */
+  src: url('assets/fonts/sora-v10-latin-800.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('assets/fonts/sora-v10-latin-800.woff2') format('woff2'), /* Super Modern Browsers */
+       url('assets/fonts/sora-v10-latin-800.woff') format('woff'), /* Modern Browsers */
+       url('assets/fonts/sora-v10-latin-800.ttf') format('truetype'), /* Safari, Android, iOS */
+}
+/* sora-600 - latin */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 600;
+  src: url('assets/fonts/sora-v10-latin-600.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('assets/fonts/sora-v10-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+       url('assets/fonts/sora-v10-latin-600.woff') format('woff'), /* Modern Browsers */
+       url('assets/fonts/sora-v10-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
 }
 
 /* SORA ITALIC */
