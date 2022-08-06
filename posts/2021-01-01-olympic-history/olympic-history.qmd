@@ -12,7 +12,7 @@ categories:
 image: MoreAthletesMoreMedals.png
 image-alt: "A plot from the post showing a positive correlation between the number of participating athletes and medals won per caountry."
 aliases: 
-  - ../../../posts/2021-01-01-olympic-history/index.html
+  - ../../posts/2021-01-01-olympic-history/index.html
 ---
 
 
