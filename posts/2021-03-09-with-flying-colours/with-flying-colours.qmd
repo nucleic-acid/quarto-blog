@@ -24,8 +24,14 @@ library("r2symbols")
 
 <details class="update-list"><summary>Updates</summary>
 
-*updated: 2021-06-15: tweaked dark_slate color for website, logo and ggplot-theme*  
-*updated: 2021-04-02: added custom fonts to ggplot-theme*
+2022-06-08
+: blog design was completely overhauled in the switch from {distill} to quarto. For historic purposes the initial design stays documented here.
+
+2021-06-15
+: tweaked dark_slate color for website, logo and ggplot-theme
+
+2021-04-02
+: added custom fonts to ggplot-theme
 
 </details>
 
