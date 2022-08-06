@@ -1,0 +1,11 @@
+---
+title: "Switching to quarto"
+subtitle: |
+  I recently ported my blog to quarto. In this post I highlight the key features, that I like about quarto and that I implemented for this website.
+categories: 
+  - meta
+---
+
+> "Quarto® is an open-source scientific and technical publishing system built on Pandoc" -- quarto.org
+
+`#Rstats` twitter is full of [@quarto_pub](https://twitter.com/quarto_pub) lately. This new framework can be seen like a successor of Rmarkdown, that is more 
