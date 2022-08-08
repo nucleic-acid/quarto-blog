@@ -51,7 +51,6 @@ format:
     theme: 
       light: [litera, jollydata.scss]
       dark: [superhero, jollydata.scss]
-    css: styles.css
     code-link: true
     code-fold: true
     code-tools: 
