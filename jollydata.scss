@@ -1,14 +1,6 @@
 /*-- scss:defaults --*/
 
-// use flatly as the base
-// $theme: "cosmo" !default;
-
-// import google fonts
-// @import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap';
-// @import 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap';
-// @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap');
-// @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Fira+Code&family=Roboto+Mono:wght@400&family=Sora:wght@300;400;500;600;700;800&family=Spline+Sans+Mono&display=swap');
-
+// Define fonts
 /* SORA UPRIGHT */
 /* sora-300 - latin */
 @font-face {
@@ -210,10 +202,6 @@ p {
 
 .quarto-about-jolla h1 {
   font-weight: 600;
-}
-
-div.quarto-about-jolla .about-link {
-  border-radius: 0;
 }
 
 .figure-caption {
