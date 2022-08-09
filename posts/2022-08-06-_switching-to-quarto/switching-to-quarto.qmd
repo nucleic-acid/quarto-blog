@@ -148,6 +148,7 @@ To specify **default variables** I looked through the variable list on the theme
 These defaults (that go to the `/*-- scss:defaults --*/` part) could be e.g. `$font-size-base`, `$body-color`, `$headings-font-weight`, etc.
 
 To change **specific HTML elements**, I right click the element on the previewed blog in my browser and "examine" them in my browser's "devtools". They tell me the class of the object. In this case the figure caption:
+
 ![Screenshot of a screenshot included in a chapter above with a tooltip from the chromium developer tools. (the original screenshot is from https://bootswatch.com/litera/).](assets/devtools.png)
 
 Under `/*-- scss:rules --*/` I can then add classic CSS rules to define the look. For figure captions I chose a smaller font size:
@@ -176,9 +177,9 @@ $font-family-sans-serif:  "Sora", sans-serif !default;
 
 ```
 
-And that's it. The website should now use the above font as default. **However, I chose to self-host the fonts.** That means that I put them on my hosted web-space and tell the readers browsers' to pull them from there (same as the rest of the website) instead of from fonts.google.com.
+And that's it. The website should now use the above font as default. **However, I chose to self-host the fonts.** That means that I stored them on my hosted web-space and instruct the readers' browsers to pull them from there (same as the rest of the website) instead of from fonts.google.com.
 
-Why? Well, according to a quite recent court ruling in Germany, a website using Google Fonts redirects a reader to fonts.google.com in the background without consent. That might cause GDPR implications, that I'm not willing to risk.^[For inclined readers from Germany: see e.g. [this article](https://www.golem.de/news/landgericht-muenchen-einbindung-von-google-fonts-ist-rechtswidrig-2202-162826.html) or many others on this topic].
+Why? Well, according to a quite recent court ruling in Germany, it is problematic if a website using Google Fonts redirects a reader to fonts.google.com in the background *without prior consent*. That might cause GDPR implications, that I'm not willing to risk.^[For inclined readers from Germany: see e.g. [this article](https://www.golem.de/news/landgericht-muenchen-einbindung-von-google-fonts-ist-rechtswidrig-2202-162826.html) or many others on this topic].
 
 If you like a certain Font from fonts.google.com and want to self-host, you could check out the following tool, which helps you get up and running easily:
 [Web Fonts Helper](https://google-webfonts-helper.herokuapp.com/fonts). Make sure the font's license is respected properly and allows you to host your own copy.
@@ -188,27 +189,34 @@ If you like a certain Font from fonts.google.com and want to self-host, you coul
 I'm not a lawyer and **I do not give any legal advice here, whatsoever**. The above is my personal interpretation of what I read on the web and I chose to self host according to this. I'm not recommending either of the options presented in this section, but instead recommend you search proper legal advice if you are concerned about this. You're proceding at you own risk regarding this. In no event shall I be held liable for any claim, damages or other liability arising from the implementation of the above font-related code or use of the Web Fonts Helper tool.
 :::
 
+### Switching figure backgrounds
+Having a dark mode option might introduce a "problem" when your plots have a bright background. They will contrast with the dark theme's dark page background.
+Thankfully, smart people have already figured out a way to circumvent this. 
+For example there is [this neat solution](https://debruine.github.io/quarto_demo/dark_mode.html) by [Lisa DeBruine](@LisaDeBruine).
+
+The idea is to have two versions of the plot (one with a dark background and one with a bright background) and only showing what fits the current blog theme, while hiding the other one. I will not implement this retrospectively for old posts, but will try to do so in upcoming publications.
+
 
 ## Custom pages
 Quarto by default sets up the post-listing, if you start a new blog project. To give credits to my other projects, I designed a custom landing page for `https://jollydata.blog`. In addition there is a "Projects" page and a "Data Viz Gallery", as well as an "About" page.
 
 ### Responsive Web Design
-I'm not a web developer and chances are, you're neither. quarto gives us a hand in providing easy means to leverage the [Bootstrap CSS Grid System](https://getbootstrap.com/docs/5.1/layout/css-grid/). Kudos to [Albert Rapp](https://getbootstrap.com/docs/5.1/layout/css-grid/), who details this in an extensive section of his post and gives directions on how to use this feature for responsive website design.
+I'm not a web developer and chances are, you're neither. quarto gives us a hand by providing easy means to leverage the [Bootstrap CSS Grid System](https://getbootstrap.com/docs/5.1/layout/css-grid/). Kudos to [Albert Rapp](https://getbootstrap.com/docs/5.1/layout/css-grid/), who details this in an extensive section of his post and gives directions on how to use this feature for responsive website design.
 
 I used his code as inspiration and combined it with elements from the bootswatch themes to implement the "Cards" on my landing page and on my project page.
 I can only recommend to check out the bootswatch theme documentation to get inspired by HTML elements that are ready to be used in a custom website such as landing pages or other special websites of your blog:
 
 ![Example HTML elements, such as sliders, check boxes, input fields, etc. on https://bootswatch.com/litera/, screenshot taken on 2022-08-08](assets/bootswatch_elements.png)
 
-I implemented my projects page by copying and adapting the code for the "Cards" object. Hovering a theme element shows a Button on the top right that opens a pop-up with the HTML-code:
+I built my projects page by copying and adapting the code for the "Cards" object. Hovering a theme element on the ["litera" page](https://bootswatch.com/litera/) shows a Button on the top right that opens a pop-up with the HTML-code:
 
 :::{.grid}
 
-::: {.g-col-12 .g-col-md-6}
+::: {.g-col-12 .g-col-md-5}
 ![Screenshot from https://bootswatch.com/litera/, taken on 2022-08-08](assets/bootswatch_code.png)
 :::
 
-::: {.g-col-12 .g-col-md-6}
+::: {.g-col-12 .g-col-md-7}
 
 ![Screenshot from https://bootswatch.com/litera/, taken on 2022-08-08](assets/bootswatch_code_2.png)
 :::
@@ -224,6 +232,8 @@ Quarto, such as RMarkdown did, understands HTML code. Just put it in the documen
 ![Screenshot of the projects page with the light theme. Some style elements were changed in comparison with the default "litera" cards design, as seen in the screenshot above.](assets/projects.png)
 
 ### Source Code
+
+As you can see below, I adapted the "Cards" cody by changing the title, the list items, the image source etc. and wrapped each card inside a grid element. Each card now spans the whole horizontal space (12/12 theoretical columns) on small screens and half of the horizontal space on medium/larger size screens (6/12 theoretical columns). There is no need to define any CSS style here, as all that is already defined in the theme that you load for the rest of the website. Whatever element you take from bootswatch.com should be defined/styled already.
 
 ``` markdown
 ---
@@ -317,11 +327,13 @@ pixgallery(
 
 ### 404-error page
 
-This is quite a self-explanatory section. You can basically design a custom page and put it e.g. in your projects root directory. You need to specify at your web hoster's settings, what page should be displayed, if a reader opens a non-existing page of your blog.
+This is quite a self-explanatory section. You can basically design a custom page and put it e.g. in your projects root directory. You need to specify at your web hoster's settings, what page should be displayed, if a reader opens a non-existing page of your blog. Check out quarto's documentation about further details on this. To inspect my 404-page, go ahead and follow [this broken link](https://jollydata.blog/broken).
 
 ## Importing existing blog posts
 
-Porting a RMarkdown blog to quarto *should* be quite straight forward -- and it most certainly is. At least in most of the cases. The R code is evaluated in the same way as it is in RMarkdown. I ran into a few frequently arising issues, mostly linked to layout options, that were used by `{distill}` but breaks quarto's renderer.
+Porting an RMarkdown blog to quarto *should* be quite straight forward -- and it most certainly is. At least in most of the cases. 
+
+The R code is evaluated in the same way as it is in RMarkdown. I ran into a few frequently arising issues, mostly linked to layout options, that were used by `{distill}` but break quarto's renderer.
 This required some manual tweaking and re-running of all the old posts. The process is still ongoing and I'll post updates on problems and solutions here:
 
 ### Output layout
@@ -344,6 +356,34 @@ If your blog is hosted on [Netlify](https://www.netlify.com), you might want to 
 In this last section I collect a few features, that I implemented / activated as well. I'll only list them here, as there is great documentation of them already out there:
 
 - [quarto extensions](https://quarto.org/docs/extensions/): these are definitely worth keeping an eye on. By opening quarto for extensions, Rstudio provided the space for creative and helpful tools that enrich the new ecosystem. Currently implemented for this blog are: [Fontawesome Icons](https://github.com/quarto-ext/fontawesome) and [Grouped Tabsets](https://github.com/quarto-ext/grouped-tabsets)
-- Comments functionality can be added by either [utterances](https://utteranc.es) or [hypothes.is](https://web.hypothes.is).
+- Comments functionality can be added by either [utterances](https://utteranc.es) or [hypothes.is](https://web.hypothes.is). Quarto's developers did a great job to make this as easy as adding three lines to `_quarto.yml`:
+``` yaml
+comments: 
+  utterances:
+    repo: nucleic-acid/comments.jollydata.blog
+```
 
+- Code options: When you read one of my blog posts, you might notice a code-switcher right next to the title. It allows the reader to expand or collapse all code chunks in the post, depending on the reader's interests:
 
+::: {.panel-tabset}
+
+### Screenshot
+
+![](assets/code_switcher.png)
+
+### How to
+
+To use this, simply add the following to your `_quarto.yml`:
+
+``` yaml
+format:
+  html:
+    code-fold: true
+    code-tools: 
+      toggle: true
+      source: false
+```
+
+There are even more options for this described in the quarto documentation. In this case, I decided to use "toggle" but not "source".
+
+:::
