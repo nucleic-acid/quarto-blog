@@ -238,3 +238,7 @@ img {
   font-family: $font-family-monospace;
   font-style: italic;
 }
+
+.contain {
+  object-fit: contain;
+}

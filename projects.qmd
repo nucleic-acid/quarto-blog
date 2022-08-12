@@ -12,7 +12,7 @@ page-layout: full
 <h3 class="card-title">{namedropR}</h3>
 <h6 class="card-subtitle text-muted">R package, available on CRAN</h6>
 </div>
-<img src="assets/images/namedropR_slide.png"/>
+<img src="assets/images/namedropR_slide.png" class="contain"/>
 <div class="card-body">
 <p class="card-text">Enables R users to convert a bibliography into a collection of legible, well formatted banners to cite scientific literature on conference slides and posters. </p>
 <img src="https://github.com/nucleic-acid/namedropR/workflows/R-CMD-check/badge.svg" alt="R-CMD-check" style="max-width: 100%;"> <img src="https://cranlogs.r-pkg.org/badges/namedropR" alt="Monthly Downloads">
@@ -40,7 +40,7 @@ page-layout: full
 <h3 class="card-title">30 Day Chart Challenge</h3>
 <h6 class="card-subtitle text-muted">2022 edition</h6>
 </div>
-<img src="assets/images/chartchallenge2022.png"/>
+<img src="assets/images/chartchallenge2022.png" class="contain"/>
 <div class="card-body">
 <p class="card-text">A data visualization community-challenge. Each day in April has a new prompt for a visualization from five different categories: Comparisons, Distributions, Relationships, Timeseries, Uncertainties.<br>
 I contributed 20 visualizations, learned new technologies and enjoyed the great contributions of the many other participants.</p>
