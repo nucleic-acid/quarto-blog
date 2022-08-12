@@ -2,8 +2,7 @@
 title: "With flying colours"
 subtitle: |
   After three months of sailing, it is time to adjust the rigging. A refreshed look with a custom color palette, a custom ggplot2 theme and an updated logo and new typography.
-description: ""
-date: 2021-09-03
+date: 2021-03-09
 categories:
   - meta
   - typography
