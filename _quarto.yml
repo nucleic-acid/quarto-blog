@@ -3,6 +3,7 @@ project:
   resources: 
     - "assets/challenges_images/"
     - "assets/images/"
+    - "assets/fonts/"
 
 website:
   title: "jolly data"
