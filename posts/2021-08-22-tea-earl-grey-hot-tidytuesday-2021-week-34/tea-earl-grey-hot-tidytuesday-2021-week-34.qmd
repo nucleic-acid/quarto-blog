@@ -8,6 +8,8 @@ categories:
   - R
   - RegEx
 image: res/preview.png
+aliases: 
+  - ../../posts/2021-08-22-tea-earl-grey-hot-tidytuesday-2021-week-34/index.html
 ---
 
 :::{.callout-note collapse=true appearance='default' icon=true}
