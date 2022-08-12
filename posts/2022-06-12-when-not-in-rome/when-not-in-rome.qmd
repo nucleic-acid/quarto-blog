@@ -6,6 +6,8 @@ date: "2022-07-08"
 categories: [R, EDA, tables, maps, interactive]
 image: assets/preview.jpg
 image-alt: "A photograph of seating rows in an ancient amphitheater. The stone rows and steps take up the whole frame leading from the lower right to the upper left in a curve."
+aliases: 
+  - ../../posts/2022-06-12-when-not-in-rome/index.html
 ---
 
 
