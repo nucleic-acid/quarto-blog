@@ -8,23 +8,26 @@ date: 2022-08-06
 code-fold: false
 ---
 
+![Photo by <a href="https://unsplash.com/@jason_yu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jason Yu</a> on <a href="https://unsplash.com/collections/151560/technology?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>](assets/typewriter.jpg)
+
 ## Introduction
 
 `#Rstats` twitter is full of [@quarto_pub](https://twitter.com/quarto_pub) lately. Seeing this new framework only as a successor of Rmarkdown would do it injustice. It is developed by [RStudio](https://www.rstudio.com)^[or [posit](https://posit.co)] and aimed to allow scientific publishing of many sorts: reports for print, interactive documents, presentations, websites ... and blogs! 
 
-I made the choice to switch this blog over from `{distill}` as quarto implemented many small improvements that were hard/impossible to implement with `{distill}`.
+I made the choice to switch this blog over from `{distill}`, as quarto implemented many small improvements that I wanted, but that were hard/impossible to implement with `{distill}`.
 
 > "Quarto® is an open-source scientific and technical publishing system built on Pandoc" -- quarto.org
 
-I will describe in detail, how I got from the minimal/default quarto blog^[that is created when you set up a quarto website project] to what this blog looks and works now. This includes: adding a dark theme, tweak both themes with (S)CSS, additional custom pages for projects, data viz gallery, quarto extensions, font self-hosting and many other smaller things.
+I will describe in detail, how I got from the minimal/default quarto blog^[that is created when you set up a quarto website project] to how this blog looks and works now. This includes: adding a dark theme, tweak both themes with (S)CSS, custom pages for projects / data viz gallery, quarto extensions, font self-hosting and many other smaller things.
 
-In this post I will **not** give a thorough walk-through of how to build a quarto website from scratch or how to port a `{distill}` blog to quarto. There are several great blog posts who do this already and which I used as guides. Those are
+In this post I will **not** give a thorough walk-through of how to build a quarto website from scratch or how to port a `{distill}` blog to quarto. There are several great blog posts who do this already and I mainly used these two to get started myself:
 
 - [Porting a distill blog to quarto](https://blog.djnavarro.net/posts/2022-04-20_porting-to-quarto/) by [Danielle Navarro](https://twitter.com/djnavarro)
 - [The ultimate guide to starting a Quarto blog](https://albert-rapp.de/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html) by [Albert Rapp](https://albert-rapp.de)
-- and of course the extraordinarily good [official documentation](https://quarto.org/docs/websites/website-blog.html) of quarto.
 
-If you like how jollydata.blog looks and feels and want to adapt some of that, I recommend following one of the posts above to get you started and then coming back here to take some of the details that you want.
+And of course there's the extraordinarily good [official documentation](https://quarto.org/docs/websites/website-blog.html) of quarto. I consulted it quite frequently and almost always found what I was looking for.
+
+If you like how jollydata.blog looks and feels and you want to adapt some of that, I recommend following one of the posts above to get you started and then coming back here to take some of the details that you want.
 
 
 :::{.callout-note collapse=false appearance='default' icon=true}
@@ -44,7 +47,7 @@ format:
     theme: litera
 ```
 
-Even if I enjoy the bright design, a reader might prefer a dark theme. Fortunately quarto offers a built-in theme-switcher in the Navbar. This activates the alternate theme on all pages of the blog, as long as the reader switches back. To activate it I simply had to explicitly define a light and a dark theme (see below on the left), which (after rendering) puts a switch-icon in the navbar (see below on the right):
+Even if I enjoy the bright design, a reader might prefer a dark theme. Fortunately, quarto offers a built-in theme-switcher in the Navbar. This activates the alternate theme on all pages of the blog, as long as the reader switches back. To activate it I simply had to explicitly define a light and a dark theme (see below on the left), which (after rendering) puts a switch-icon in the navbar (see below on the right):
 
 :::: {.columns}
 
@@ -138,6 +141,8 @@ format:
       dark: [superhero, jollydata.scss]
 ```
 
+By doing this, the themes respect the common style elements defined by `jollydata.scss`, but still use the rest of their respective light/dark design-scheme.
+
 ### Tweaking the themes even further
 Apart from the above I made several small adjustments, mostly going below the `/*-- scss:rules --*/`. Instead of detailing all of that, I'll explain how I proceeded with two examples:
 
@@ -147,11 +152,11 @@ To specify **default variables** I looked through the variable list on the theme
 
 These defaults (that go to the `/*-- scss:defaults --*/` part) could be e.g. `$font-size-base`, `$body-color`, `$headings-font-weight`, etc.
 
-To change **specific HTML elements**, I right click the element on the previewed blog in my browser and "examine" them in my browser's "devtools". They tell me the class of the object. In this case the figure caption:
+To change **specific HTML elements**, I open the site-preview in my web browser, right-click the element and "examine" them in the browser's "devtools". They tell me the "class" of the object. In this case the figure caption has the class `figure-caption`:
 
 ![Screenshot of a screenshot included in a chapter above with a tooltip from the chromium developer tools. (the original screenshot is from https://bootswatch.com/litera/).](assets/devtools.png)
 
-Under `/*-- scss:rules --*/` I can then add classic CSS rules to define the look. For figure captions I chose a smaller font size:
+Under `/*-- scss:rules --*/` I added classic CSS rules to define the look. E. g. , for figure captions I chose a smaller font size:
 
 ``` scss
 .figure-caption {
@@ -198,17 +203,17 @@ The idea is to have two versions of the plot (one with a dark background and one
 
 
 ## Custom pages
-Quarto by default sets up the post-listing, if you start a new blog project. To give credits to my other projects, I designed a custom landing page for `https://jollydata.blog`. In addition there is a "Projects" page and a "Data Viz Gallery", as well as an "About" page.
+Quarto - by default - sets the posts-listing as index page, when you start a new blog project. To give credits to my other projects, I designed a custom landing page for `https://jollydata.blog`, where the blog is presented next to those other projects. So in my case, in addition to the post listing there is a "Projects" page and a "Data Viz Gallery", as well as an "About" page.
 
 ### Responsive Web Design
 I'm not a web developer and chances are, you're neither. quarto gives us a hand by providing easy means to leverage the [Bootstrap CSS Grid System](https://getbootstrap.com/docs/5.1/layout/css-grid/). Kudos to [Albert Rapp](https://getbootstrap.com/docs/5.1/layout/css-grid/), who details this in an extensive section of his post and gives directions on how to use this feature for responsive website design.
-
 I used his code as inspiration and combined it with elements from the bootswatch themes to implement the "Cards" on my landing page and on my project page.
+
 I can only recommend to check out the bootswatch theme documentation to get inspired by HTML elements that are ready to be used in a custom website such as landing pages or other special websites of your blog:
 
 ![Example HTML elements, such as sliders, check boxes, input fields, etc. on https://bootswatch.com/litera/, screenshot taken on 2022-08-08](assets/bootswatch_elements.png)
 
-I built my projects page by copying and adapting the code for the "Cards" object. Hovering a theme element on the ["litera" page](https://bootswatch.com/litera/) shows a Button on the top right that opens a pop-up with the HTML-code:
+I built my projects page by copying and adapting the code for the "Cards" object. Hovering a theme element on the ["litera" page](https://bootswatch.com/litera/) shows a button on the top right that opens a pop-up with the HTML-code:
 
 :::{.grid}
 
@@ -223,13 +228,18 @@ I built my projects page by copying and adapting the code for the "Cards" object
 
 :::
 
-Quarto, such as RMarkdown did, understands HTML code. Just put it in the document, where you want to have the element.^[Be cautious with line indentation within qmd files. I had a very long and frustrating error-hunt until I figured out that you should not indent the HTML code.] For example my projects page's code now looks like this:
+Quarto, such as RMarkdown did, understands HTML code. Just put it in the document, where you want to have the element.^[Be cautious with line indentation within qmd files. I had a very long and frustrating error-hunt until I figured out that you should not indent the HTML code.] As this is taken from the bootsatch project, they provide proper styling within their themes. So these objects play well with the blog's light and dark theme.
+For example my projects page and the code now looks like this:
 
 ::: {.panel-tabset}
 
-### Screenshot
+### Screenshot Light
 
 ![Screenshot of the projects page with the light theme. Some style elements were changed in comparison with the default "litera" cards design, as seen in the screenshot above.](assets/projects.png)
+
+### Screenshot Dark
+
+![Screenshot of the projects page with the dark theme. Some style elements were changed in comparison with the default "superhero" cards design.](assets/projects_dark.png)
 
 ### Source Code
 
@@ -300,16 +310,28 @@ I contributed 20 visualizations, learned new technologies and enjoyed the great 
 
 :::
 
+The same principle was used for the landing page, but with simpler "cards". They follow the theme design and are floating elements in a responsive design:
 
+::: {.panel-tabset}
+
+### Wide screen
+
+![Screenshot of the index page on a wide screen.](assets/landing_wide.png)
+
+### Mobile
+
+![Screenshot of the index page on a mobile screen.](assets/landing_mobile.png)
+
+:::
 
 ### Data Viz Gallery
 
-This is something that was already present in the Rmarkdown-based version of my blog. Luckily the code runs as smooth in quarto, as it did before.
+This was already present in the Rmarkdown-based version of my blog. Luckily the code runs as smooth in quarto, as it did before.
 The heavy-lifting is done by the [`{pixture}` package](https://www.royfrancis.com/pixture/) by Roy Francis.
 
-This package basically takes a folder with images as input and generates a beautiful image gallery including JavaScript code that allows full screen swiping through the pictues.
+This package basically takes a folder with images as input and generates a beautiful image gallery including JavaScript code that allows full screen swiping through the pictures.
 
-The implementation for my [Gallery](https://jollydata.blog/challenges.html) consists of a few lines of code:
+The implementation for my [gallery](https://jollydata.blog/challenges.html) consists of a few lines of code:
 
 
 ```{r}
@@ -355,21 +377,21 @@ If your blog is hosted on [Netlify](https://www.netlify.com), you might want to 
 
 In this last section I collect a few features, that I implemented / activated as well. I'll only list them here, as there is great documentation of them already out there:
 
-- [quarto extensions](https://quarto.org/docs/extensions/): these are definitely worth keeping an eye on. By opening quarto for extensions, Rstudio provided the space for creative and helpful tools that enrich the new ecosystem. Currently implemented for this blog are: [Fontawesome Icons](https://github.com/quarto-ext/fontawesome) and [Grouped Tabsets](https://github.com/quarto-ext/grouped-tabsets)
-- Comments functionality can be added by either [utterances](https://utteranc.es) or [hypothes.is](https://web.hypothes.is). Quarto's developers did a great job to make this as easy as adding three lines to `_quarto.yml`:
+- **Quarto extensions**: [these](https://quarto.org/docs/extensions/) are definitely worth keeping an eye on. By opening quarto for extensions, Rstudio provided the space for creative and helpful tools that enrich the new ecosystem. Currently implemented for this blog are: [Fontawesome Icons](https://github.com/quarto-ext/fontawesome) and [Grouped Tabsets](https://github.com/quarto-ext/grouped-tabsets)
+- **Comments functionality** can be added by either [utterances](https://utteranc.es) or [hypothes.is](https://web.hypothes.is). Quarto's developers did a great job to make this as easy as adding three lines to `_quarto.yml`:
 ``` yaml
 comments: 
   utterances:
     repo: nucleic-acid/comments.jollydata.blog
 ```
 
-- Code options: When you read one of my blog posts, you might notice a code-switcher right next to the title. It allows the reader to expand or collapse all code chunks in the post, depending on the reader's interests:
+- **Code options**: When you read one of my blog posts, you might notice a code-switcher right next to the title. It allows the reader to expand or collapse all code chunks in the post, depending on the reader's interests:
 
 ::: {.panel-tabset}
 
 ### Screenshot
 
-![](assets/code_switcher.png)
+![Screenshot of a recent post on Roman Amphitheaters.](assets/code_switcher.png)
 
 ### How to
 
@@ -387,3 +409,10 @@ format:
 There are even more options for this described in the quarto documentation. In this case, I decided to use "toggle" but not "source".
 
 :::
+
+
+## Closing remarks
+The quarto framework is quite exciting and already offers many possibilities for technical and scientific publishing.
+In porting my blog, most of the time consuming work was needed to adapt (and re-run) the existing blog posts.
+
+Let me know in the comments, if you found other exciting quarto extensions or features that could be added to the post above!
