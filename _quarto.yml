@@ -4,6 +4,7 @@ project:
     - "assets/challenges_images/"
     - "assets/images/"
     - "assets/fonts/"
+    - ".htaccess"
 
 website:
   title: "jolly data"
