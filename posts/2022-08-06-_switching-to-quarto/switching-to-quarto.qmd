@@ -7,6 +7,8 @@ categories:
 date: 2022-08-06
 code-fold: false
 image: assets/typewriter_small.jpg
+citation:
+  type: post-weblog
 ---
 
 ![Photo by <a href="https://unsplash.com/@jason_yu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jason Yu</a> on <a href="https://unsplash.com/collections/151560/technology?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>](assets/typewriter.jpg)
