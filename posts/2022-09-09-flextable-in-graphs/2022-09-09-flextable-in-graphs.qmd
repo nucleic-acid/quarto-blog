@@ -8,7 +8,7 @@ categories:
   - R
 date: 2022-08-06
 code-fold: false
-image: assets/typewriter_small.jpg
+image: preview.jpg
 citation:
   type: post-weblog
 ---
@@ -34,6 +34,9 @@ In this post I revise my initial plot to showcase this approach to include a tab
 :::{.callout-note collapse=false appearance='default' icon=true}
 ## Note
 While revising, I changed the color-palette to a **colorblind friendly palette**. I initially used green to match the day's theme of 'flora'. I didn't realize, that I ended up with a red/green diverging palette that made it really hard for some viewers to differentiate.
+
+Image credit for the preview picture: <a href="https://unsplash.com/@hudsoncrafted?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Debby Hudson</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
 :::
 
 :::{.callout-important collapse=true appearance='default' icon=true}
