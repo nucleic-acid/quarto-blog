@@ -55,5 +55,24 @@ I contributed 20 visualizations, learned new technologies and enjoyed the great 
 
 :::
 
+::: {.g-col-12 .g-col-md-6}
+
+<div class="card mb-3">
+<div class="card-body">
+<h3 class="card-title">Bundestag-Series</h3>
+<h6 class="card-subtitle text-muted">A collection of posts analysing open data of the German National Parliament</h6>
+</div>
+<img src="assets/images/bt_image.jpg" class="contain"/>
+<div class="card-body">
+<p class="card-text">The German National Parliament, the "Bundestag", provides open datasets, that contain information on elected representatives over time and data on public votes.<br>
+In this series I analyse several aspects of the Bundestag, ranging from age and gender distribution over the decades to a network analysis of parliamentarians according to their voting behavior.</p>
+</div>
+<div class="card-body">
+<a href="https://jollydata.blog/posts.html#category=bundestag" class="card-link">Show series</a>
+</div>
+</div>
+
+:::
+
 :::
 
