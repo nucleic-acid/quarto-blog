@@ -9,6 +9,7 @@ categories:
 date: 2022-09-09
 code-fold: false
 image: preview.jpg
+image-alt: "An image of a small wooden table with a flower on it. To the left and right are empty chairs. The scene is set in front of a white painted brick wall, which fills the whole background."
 citation:
   type: post-weblog
 ---
