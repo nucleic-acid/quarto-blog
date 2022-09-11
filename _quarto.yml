@@ -9,7 +9,6 @@ project:
 website:
   title: "jolly data"
   description: "A personal blog on the exploration of open data and other adventures."
-  logo: assets/images/logo_dynamic.png
   navbar:
     left: 
       - text: "blog"
