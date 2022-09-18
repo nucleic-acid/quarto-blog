@@ -1,7 +1,7 @@
 ---
 title: "When Not in Rome..."
 subtitle: |
-  ...still do as the Romans do. One of the most famous amphitheaters is the *Colosseum* in Rome. But the Roman Empire built many more outside of its capital across Europe and around the Mediterranian Sea. This post explores 268 of these historic sites and includes a dashboard for interactive exploration.
+  ...still do as the Romans do. The Roman Empire built many amphitheaters outside of its capital. This post explores 268 of these historic sites and includes a dashboard for interactive exploration.
 date: "2022-07-08"
 categories: [R, EDA, tables, maps, interactive]
 image: assets/preview_small.jpg
