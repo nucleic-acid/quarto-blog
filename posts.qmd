@@ -3,7 +3,8 @@ title: "blog"
 listing:
   contents: posts
   sort: "date desc"
-  feed: true
+  feed: 
+    type: partial
   sort-ui: true
   type: grid
   categories: true
