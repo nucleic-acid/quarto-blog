@@ -3,6 +3,9 @@ page-layout: full
 comments: false
 ---
 
+<script src="/assets/scripts/node_modules/typeit/dist/index.umd.js"></script>
+
+
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-10 .g-start-md-2}
@@ -13,6 +16,10 @@ comments: false
 
 ::: {.h1 #welcome-message-title}
 Hi, welcome to the jolly data blog!
+:::
+
+::: {.h3 #welcome-message-title2}
+<p class="multipleStrings"></p>
 :::
 
 :::
@@ -49,4 +56,7 @@ Hi, welcome to the jolly data blog!
 :::
 
 :::
+
+
+<script type="text/plain" cookie-consent="functionality" src="/assets/scripts/welcome.js"></script>
 
