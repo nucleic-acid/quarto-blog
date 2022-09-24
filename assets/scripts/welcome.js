@@ -1,7 +1,7 @@
 new TypeIt(".multipleStrings", {
     waitUntilVisible: true,
     <!-- loop: true, -->
-    speed: 75
+    speed: 55
   })
   .type("A blog on the ", { delay: 400 })
   .type("exploration of open data", {delay: 700, speed: 120})
@@ -34,6 +34,7 @@ new TypeIt(".multipleStrings", {
   .delete(4)
   .type("files and new visualizations.", {delay: 300})
   .break()
+  .pause(300)
   .type("To boldy go", {delay: 400})
   .delete(2)
   .pause(200)
