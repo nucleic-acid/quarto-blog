@@ -5,7 +5,7 @@ about:
   image: assets/images/pixelart2.png
   links:
     - icon: mastodon
-      url: "https://scicomm.xyz/\\@basepair"
+      url: "https://vis.social/@basepair"
     - icon: twitter
       url: "https://twitter.com/c_gebhard"
     - icon: github
