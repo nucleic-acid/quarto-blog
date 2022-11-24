@@ -43,10 +43,10 @@ website:
         href: impressum.html
       - text: Privacy / Datenschutz
         href: datenschutz.html
-    right: <a rel="me" href="https://scicomm.xyz/@basepair">Mastodon</a>
+    right: <a rel="me" href="https://vis.social/@basepair">Mastodon</a>
   comments: 
-    utterances:
-      repo: nucleic-acid/comments.jollydata.blog
+    giscus:
+      repo: nucleic-acid/quarto-blog
 highlight-style: arrow
 format:
   html:
