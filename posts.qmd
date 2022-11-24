@@ -6,7 +6,7 @@ listing:
   feed: 
     type: partial
   sort-ui: true
-  type: grid
+  type: default
   categories: true
   sort-ui: true
   filter-ui: false
