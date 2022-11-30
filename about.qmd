@@ -10,6 +10,8 @@ about:
       url: "https://twitter.com/c_gebhard"
     - icon: github
       url: "https://github.com/nucleic-acid"
+    - text: "{{< ai orcid >}}"
+      url: https://orcid.org/0000-0002-8792-565X
     - icon: rss
       url: posts.xml
 comments: false

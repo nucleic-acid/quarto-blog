@@ -6,7 +6,6 @@ project:
     - "assets/fonts/"
     - "assets/scripts/"
     - ".htaccess"
-
 website:
   title: "jolly data"
   description: "A personal blog on the exploration of open data and other adventures."
@@ -27,6 +26,8 @@ website:
         href: https://twitter.com/c_gebhard
       - icon: mastodon
         href: https://vis.social/@basepair
+      - text: "{{< ai orcid >}}"
+        href: https://orcid.org/0000-0002-8792-565X
       - icon: rss
         href: posts.xml
   site-url: https://jollydata.blog
