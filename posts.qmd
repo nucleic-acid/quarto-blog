@@ -8,7 +8,6 @@ listing:
   sort-ui: true
   type: default
   categories: true
-  sort-ui: true
   filter-ui: false
   image-height: 170px
   image-placeholder: "assets/logo_dynamic_hero.png"
