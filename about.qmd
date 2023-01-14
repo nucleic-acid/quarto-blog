@@ -38,7 +38,7 @@ I’m a medical doctor specializing in human genetics. Apart from that, I’m in
 ::: {.g-col-12 .g-col-md-6}
 ## {{< fa solid graduation-cap >}}  Education
 
-- **Specializing in Human Genetics / Genetic Counseling**, since 2019
+- **Specializing in Human Genetics**, since 2019
 - **Clinical Rotation**, 2018 - 2019  
   *Paediatrics*
 - **Medical Doctorate**, 2018  
