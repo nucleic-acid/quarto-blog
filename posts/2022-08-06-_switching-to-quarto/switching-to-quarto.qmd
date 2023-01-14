@@ -13,6 +13,12 @@ citation:
 
 ![Photo by <a href="https://unsplash.com/@jason_yu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jason Yu</a> on <a href="https://unsplash.com/collections/151560/technology?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>](assets/typewriter.jpg)
 
+:::{.callout-note collapse=true appearance='default' icon=true}
+## Updates
+2023-01-14
+: Minor text refinements; made tip regarding HTML indentation more prominent, as some readers gave feedback regarding its importance; adds giscus to section regarding comments; adds academicons to list of quarto extensions.
+:::
+
 ## Introduction
 
 `#Rstats` twitter is full of [@quarto_pub](https://twitter.com/quarto_pub) lately. Seeing this new framework only as a successor of Rmarkdown would do it injustice. It is developed by [RStudio](https://www.rstudio.com)^[or [posit](https://posit.co)] and aimed to allow scientific publishing of many sorts: reports for print, interactive documents, presentations, websites ... and blogs! 
@@ -231,7 +237,14 @@ I built my projects page by copying and adapting the code for the "Cards" object
 
 :::
 
-Quarto, such as RMarkdown did, understands HTML code. Just put it in the document, where you want to have the element.^[Be cautious with line indentation within qmd files. I had a very long and frustrating error-hunt until I figured out that you should not indent the HTML code.] As this is taken from the bootsatch project, they provide proper styling within their themes. So these objects play well with the blog's light and dark theme.
+Quarto, such as RMarkdown did, understands HTML code. Just put it in the document, where you want to have the element.
+
+:::{.callout-tip collapse=false appearance='default' icon=true}
+## Avoid time consuming debugging:
+Be cautious with line indentation within qmd files. You should not indent the HTML code: it might look better while coding, but it might not be interpreted correctly by quarto.
+:::
+
+As this is taken from the bootsatch project, they provide proper styling within their themes. So these objects play well with the blog's light and dark theme.
 For example my projects page and the code now looks like this:
 
 ::: {.panel-tabset}
@@ -380,12 +393,12 @@ If your blog is hosted on [Netlify](https://www.netlify.com), you might want to 
 
 In this last section I collect a few features, that I implemented / activated as well. I'll only list them here, as there is great documentation of them already out there:
 
-- **Quarto extensions**: [these](https://quarto.org/docs/extensions/) are definitely worth keeping an eye on. By opening quarto for extensions, Rstudio provided the space for creative and helpful tools that enrich the new ecosystem. Currently implemented for this blog are: [Fontawesome Icons](https://github.com/quarto-ext/fontawesome) and [Grouped Tabsets](https://github.com/quarto-ext/grouped-tabsets)
-- **Comments functionality** can be added by either [utterances](https://utteranc.es) or [hypothes.is](https://web.hypothes.is). Quarto's developers did a great job to make this as easy as adding three lines to `_quarto.yml`:
+- **Quarto extensions**: [these](https://quarto.org/docs/extensions/) are definitely worth keeping an eye on. By opening quarto for extensions, Rstudio provided the space for creative and helpful tools that enrich the new ecosystem. Currently implemented for this blog are: [Fontawesome Icons](https://github.com/quarto-ext/fontawesome), [Academicons](https://github.com/schochastics/academicons) for the ORCiD icon & [Grouped Tabsets](https://github.com/quarto-ext/grouped-tabsets)
+- **Comments functionality** can be added by either [utterances](https://utteranc.es), giscus (which I use) or [hypothes.is](https://web.hypothes.is). Quarto's developers did a great job to make this as easy as adding three lines to `_quarto.yml`:
 ``` yaml
-comments: 
-  utterances:
-    repo: nucleic-acid/comments.jollydata.blog
+  comments: 
+    giscus:
+      repo: nucleic-acid/quarto-blog
 ```
 
 - **Code options**: When you read one of my blog posts, you might notice a code-switcher right next to the title. It allows the reader to expand or collapse all code chunks in the post, depending on the reader's interests:
