@@ -459,7 +459,7 @@ Note that the distances between nodes are not proportional to the mathematical s
 knitr::include_graphics("images/wp_clust_marked_400.png")
 ```
 
-The above image shows a pleasing clustering into party affiliation and legislative periods. For a closer look, here is the [full size version](images/wp_clust_marked.png). A more detailed view, where the nodes have been spread out, so that the representatives' names fit as a label can be found [here](images/wp_clust_detail2.png). The dotted lines are there to indicate "regions" not clear boundaries.
+The above image shows a pleasing clustering into party affiliation and legislative periods. For a closer look, here is the [full size version](images/wp_clust_marked.png). A more detailed view, where the nodes have been spread out, so that the representatives' names fit as a label can be found [here](images/wp_clust_detail2.webp). The dotted lines are there to indicate "regions" not clear boundaries.
 
 There are a few findings that I want to point out:
 
