@@ -4,6 +4,7 @@ comments: false
 ---
 
 <script src="/assets/scripts/node_modules/typeit/dist/index.umd.js"></script>
+<link rel="me" href="https://vis.social/@basepair" />
 
 
 ::: {.grid}

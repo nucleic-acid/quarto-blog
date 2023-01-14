@@ -39,12 +39,11 @@ website:
     policy-url: datenschutz.html
   page-footer: 
     left: Christian A. Gebhard {{< fa regular copyright >}} 2022<br>made with {{< fa heart >}}, {{< fa brands r-project >}}  and [quarto](https://quarto.org)
-    center: 
+    right: 
       - text: Impressum
         href: impressum.html
       - text: Privacy / Datenschutz
         href: datenschutz.html
-    right: <a rel="me" href="https://vis.social/@basepair">Mastodon</a>
   comments: 
     giscus:
       repo: nucleic-acid/quarto-blog
