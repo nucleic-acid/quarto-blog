@@ -9,7 +9,7 @@ comments: false
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-10 .g-start-md-2}
-![](assets/images/logo_dynamic_hero_transparent.png)
+![](assets/images/logo_dynamic_hero.webp)
 :::
 
 ::: {.g-col-12 .g-col-md-10 .g-start-md-2}
