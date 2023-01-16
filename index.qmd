@@ -17,7 +17,7 @@ comments: false
 ::: {.g-col-12 .g-col-md-10 .g-start-md-2}
 
 ::: {.h1 #welcome-message-title}
-Hi, welcome to the jolly data blog!
+Hello and welcome to jolly data!
 :::
 
 ::: {.h3 #welcome-message-title2}
