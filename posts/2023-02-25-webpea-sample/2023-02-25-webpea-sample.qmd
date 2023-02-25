@@ -16,9 +16,9 @@ citation:
 
 ## Intoduction
 
-Common forms to save plots in R include PNG or SVG. Both have their advantages, be it e.g. versatility or scalability. Since I learned about the [WebP image file format](https://en.wikipedia.org/wiki/WebP) recently and that it is supported by all major web browsers^[[https://caniuse.com/webp](https://caniuse.com/webp)]. The format offers considerable compression improvements over PNG with no apparent visual accuracy loss (in default settings).
+Common forms to save plots in R include PNG or SVG. Both have their advantages, be it e.g. versatility or scalability. I learned about the [WebP image file format](https://en.wikipedia.org/wiki/WebP) recently and that it is supported by all major web browsers^[[https://caniuse.com/webp](https://caniuse.com/webp)]. The format offers considerable compression improvements over PNG with no apparent visual accuracy loss (in default settings).
 
-![Photo by <a href="https://unsplash.com/@jean_mi_g?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jean-Michel GARCIA</a> on <a href="https://unsplash.com/de/fotos/bwKUJ3Y5JS4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>](assets/jean-michel-garcia-bwKUJ3Y5JS4-unsplash.jpg)
+![Photo by <a href="https://unsplash.com/@jean_mi_g?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jean-Michel GARCIA</a> on <a href="https://unsplash.com/de/fotos/bwKUJ3Y5JS4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>](assets/peas.webp)
 
 There are, of course, command line tools to convert image files for UNIX systems. There's ImageMagick for Linux and apparently SIPS for MacOS^[Thanks to [@hrbrmstr](https://vis.social/@hrbrmstr) for the [pointer](https://vis.social/@hrbrmstr/109927376664625632)].
 However this is not a practical approach for when you want to write an Rmd report or e.g. Quarto blog post, just like this one.
@@ -27,7 +27,7 @@ However this is not a practical approach for when you want to write an Rmd repor
 ![The webpea package](webpea_hex.webp) [https://github.com/nucleic-acid/webpea](https://github.com/nucleic-acid/webpea)
 :::
 
-In comes **{webpea}**, an experimantal R package, that I wrote to ease this process. It's just a small package and at this stage a simple wrapper function, that combines `{ggplot2}`'s `ggsave()` with the `{magick}` package. For the basic implementation, please refer to the manual or the [README](https://github.com/nucleic-acid/webpea).
+In comes **{webpea}**, an experimantal R package to ease this process. It's just a small package and at this stage a simple wrapper function, that combines `{ggplot2}`'s `ggsave()` with the `{magick}` package. For the basic implementation, please refer to the manual or the [README](https://github.com/nucleic-acid/webpea).
 
 ## The Old Way
 
@@ -46,7 +46,7 @@ ggplot(diamonds) +
   theme_light()
 ```
 
-In "default quarto rendering" the above plot will be included as PNG with a resolution of 1536 x 1152 pixels and a size of 641,73 KB. 
+In "default quarto rendering" the above plot will be included as PNG with a resolution of 1536 x 1152 px and a size of 641,73 KB. 
 
 ## Automate WebP Export and Inclusion in the HTML output
 Since we want to have a WebP version, let's store the plot in a variable, thus it won't get printed to the output. `webpea::webpea()` returns the file path/name. We can use this to put the function directly into the "src=" argument of `htmltools::img()`.
