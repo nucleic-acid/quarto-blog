@@ -1,0 +1,77 @@
+---
+title: "Export plots in WebP format"
+subtitle: |
+  Since there's no "built in" way to export R graphs to WebP images, {webpea} offers a function to save single plots or to automate WebP export in quarto / Rmd documents.
+categories: 
+  - ggplot2
+  - experimental
+  - R
+date: 2023-02-25
+code-fold: false
+image: webpea_hex.webp
+image-alt: "The hex sticker of the webpea package."
+citation:
+  type: post-weblog
+---
+
+## Intoduction
+
+Common forms to save plots in R include PNG or SVG. Both have their advantages, be it e.g. versatility or scalability. Since I learned about the [WebP image file format](https://en.wikipedia.org/wiki/WebP) recently and that it is supported by all major web browsers^[[https://caniuse.com/webp](https://caniuse.com/webp)]. The format offers considerable compression improvements over PNG with no apparent visual accuracy loss (in default settings).
+
+![Photo by <a href="https://unsplash.com/@jean_mi_g?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jean-Michel GARCIA</a> on <a href="https://unsplash.com/de/fotos/bwKUJ3Y5JS4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>](assets/jean-michel-garcia-bwKUJ3Y5JS4-unsplash.jpg)
+
+There are, of course, command line tools to convert image files for UNIX systems. There's ImageMagick for Linux and apparently SIPS for MacOS^[Thanks to [@hrbrmstr](https://vis.social/@hrbrmstr) for the [pointer](https://vis.social/@hrbrmstr/109927376664625632)].
+However this is not a practical approach for when you want to write an Rmd report or e.g. Quarto blog post, just like this one.
+
+::: {.column-margin}
+![The webpea package](webpea_hex.webp) [https://github.com/nucleic-acid/webpea](https://github.com/nucleic-acid/webpea)
+:::
+
+In comes **{webpea}**, an experimantal R package, that I wrote to ease this process. It's just a small package and at this stage a simple wrapper function, that combines `{ggplot2}`'s `ggsave()` with the `{magick}` package. For the basic implementation, please refer to the manual or the [README](https://github.com/nucleic-acid/webpea).
+
+## The Old Way
+
+First let's draw a plot, the default way.
+```{r}
+#| echo: fenced
+#| fig-width: 8
+#| fig-height: 6
+
+library(webpea)
+library(ggplot2)
+
+ggplot(diamonds) +
+  aes(price, carat, color = as.factor(cut)) +
+  geom_point(alpha = 0.5, size = 3) +
+  theme_light()
+```
+
+In "default quarto rendering" the above plot will be included as PNG with a resolution of 1536 x 1152 pixels and a size of 641,73 KB. 
+
+## Automate WebP Export and Inclusion in the HTML output
+Since we want to have a WebP version, let's store the plot in a variable, thus it won't get printed to the output. `webpea::webpea()` returns the file path/name. We can use this to put the function directly into the "src=" argument of `htmltools::img()`.
+
+```{r}
+#| echo: fenced
+
+p <- ggplot(diamonds) +
+  aes(price, carat, color = as.factor(cut)) +
+  geom_point(alpha = 0.5, size = 3) +
+  theme_light()
+
+htmltools::img(
+  src = webpea(
+    "chunk1.webp", 
+    plot = p, 
+    height = 6, 
+    width = 8, 
+    path_return = FALSE
+    ),
+  width = "100%"
+  )
+```
+
+The second plot is a WebP image with a resolution of 2400 x 1800 px and a file size of 154,31 KB. Even if the image has a slightly higher resolution, the file size is a quarter of the original PNG. 
+
+## Conclusion
+WebP offers a great improvement in file compression without relevant quality loss. In fact, if you open both image files above with 100% zoom: can you spot significant differences? *I can't*, but I'd still be interested in your feedback. So let me know in the comments below.
