@@ -26,8 +26,8 @@ page-layout: full
 <li class="list-group-item">Use as drop-in replacement for {ggplot}'s ggsave()</li>
 </ul>
 <div class="card-body">
-<a href="https://nucleic-acid.github.io/webp/" class="card-link">Documentation</a>
-<a href="https://github.com/nucleic-acid/webp/" class="card-link">Source code</a>
+<a href="https://nucleic-acid.github.io/webpea/" class="card-link">Documentation</a>
+<a href="https://github.com/nucleic-acid/webpea/" class="card-link">Source code</a>
 </div>
 </div>
 
@@ -43,7 +43,7 @@ page-layout: full
 <img src="assets/images/namedropr_hex.webp" class="contain" height="400"/>
 <div class="card-body">
 <p class="card-text">Enables R users to convert a bibliography into a collection of legible, well formatted banners to cite scientific literature on conference slides and posters. </p>
-<img src="https://github.com/nucleic-acid/namedropR/workflows/R-CMD-check/badge.svg" alt="R-CMD-check" style="max-width: 100%;"> <img src="https://cranlogs.r-pkg.org/badges/namedropR" alt="Monthly Downloads">
+<img src="https://cranlogs.r-pkg.org/badges/namedropR" alt="Monthly Downloads">
 <br><br>
 <h5>Key features:</h5>
 </div>
