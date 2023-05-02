@@ -7,8 +7,8 @@ project:
     - "assets/scripts/"
     - ".htaccess"
 website:
-  title: "jolly data"
-  description: "A personal blog on the exploration of open data and other adventures."
+  title: "Christian Gebhard"
+  description: "Data Visualization"
   navbar:
     left: 
       - text: "blog"
