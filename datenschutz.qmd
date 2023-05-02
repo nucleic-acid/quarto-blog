@@ -64,7 +64,7 @@ As the controller, the jolly data blog has implemented numerous technical and or
     Controller for the purposes of the General Data Protection Regulation (GDPR), other data protection laws applicable in Member states of the European Union and other provisions related to data protection is:
     
     Christian A. Gebhard  
-    Welfenstr. 16b  
+    Eduard-Schmid-Str. 32  
     D-81541 Munich  
     Germany  
     Phone: +49 1522 3084545  
