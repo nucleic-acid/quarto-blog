@@ -25,7 +25,7 @@ website:
       - icon: twitter
         href: https://twitter.com/c_gebhard
       - icon: mastodon
-        href: https://vis.social/@basepair
+        href: https://scicomm.xyz/@basepair
       - text: "{{< ai orcid >}}"
         href: https://orcid.org/0000-0002-8792-565X
       - icon: rss
