@@ -18,7 +18,7 @@ website:
       - text: "Blog"
         href: posts.html
     right:
-      - text: "Let's connect!"
+      - text: "Contact"
         menu: 
         - icon: github
           href: https://github.com/nucleic-acid
@@ -34,7 +34,7 @@ website:
         - icon: rss
           href: posts.xml
           text: "RSS feed"
-      - text: "About"
+      - text: "About Me"
         href: about.html
   site-url: https://jollydata.blog
   twitter-card: true
