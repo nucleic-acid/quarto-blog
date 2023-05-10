@@ -8,28 +8,34 @@ project:
     - ".htaccess"
 website:
   title: "Christian Gebhard"
-  description: "Data Visualization"
+  description: "Data Visualization and Information Design"
   navbar:
     left: 
-      - text: "blog"
-        href: posts.html
-      - text: "dataviz"
+      - text: "Dataviz"
         href: challenges.html
-      - text: "projects"
+      - text: "Projects"
         href: projects.html
+      - text: "Blog"
+        href: posts.html
     right:
-      - text: "about"
+      - text: "Let's connect!"
+        menu: 
+        - icon: github
+          href: https://github.com/nucleic-acid
+          text: "Github"
+        - icon: mastodon
+          href: https://scicomm.xyz/@basepair
+          text: "Mastodon"
+        - icon: twitter
+          href: https://twitter.com/c_gebhard
+          text: "Twitter"
+        - text: "{{< ai orcid >}} ORCiD"
+          href: https://orcid.org/0000-0002-8792-565X
+        - icon: rss
+          href: posts.xml
+          text: "RSS feed"
+      - text: "About"
         href: about.html
-      - icon: github
-        href: https://github.com/nucleic-acid
-      - icon: twitter
-        href: https://twitter.com/c_gebhard
-      - icon: mastodon
-        href: https://scicomm.xyz/@basepair
-      - text: "{{< ai orcid >}}"
-        href: https://orcid.org/0000-0002-8792-565X
-      - icon: rss
-        href: posts.xml
   site-url: https://jollydata.blog
   twitter-card: true
   open-graph: true
