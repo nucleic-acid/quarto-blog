@@ -1,31 +1,29 @@
 ---
-title: "Christian A. Gebhard"
+title: "Christian Gebhard"
 about:
-  template: trestles
-  image: assets/images/pixelart2.png
+  template: solana
+  image: assets/images/profile-cropped.webp
+  image-width: 20em
+  image-shape: round
   links:
     - icon: mastodon
       url: "https://scicomm.xyz/@basepair"
-    - icon: twitter
-      url: "https://twitter.com/c_gebhard"
+      text: "Mastodon"
     - icon: github
       url: "https://github.com/nucleic-acid"
-    - text: "{{< ai orcid >}}"
+      text: "GitHub"
+    - icon: linkedin
+      url: "https://www.linkedin.com/in/christian-gebhard-934b24275/"
+      text: "LinkedIn"
+    - text: "{{< ai orcid >}} ORCiD"
       url: https://orcid.org/0000-0002-8792-565X
-    - icon: rss
-      url: posts.xml
 comments: false
 page-layout: full
 ---
 
-::: {.grid}
 
-::: {.g-col-12 .g-col-md-12}
-## {{< fa solid dna >}} About 
-I’m a medical doctor specializing in human genetics. Apart from that, I’m interested in open and reproducible research, data analysis and data visualization using open and reproducible tools, such as R and Python. This is my personal blog, where I like to share my views on topics, I’m excited about: statistics, exploring open data and the intersection of science communication, data visualization and informative illustrations.
-:::
+I’m a medical doctor working in human genetics. Apart from that, I’m interested in open and reproducible research, data analysis and data visualization using open and reproducible tools, such as R and Python. This is my personal blog, where I like to share my views on topics, I’m excited about: statistics, exploring open data and the intersection of science communication, data visualization and informative illustrations.
 
-::: {.g-col-12 .g-col-md-6}
 ## {{< fa solid heart >}} Interests 
 
 - Human Genetics
@@ -33,9 +31,7 @@ I’m a medical doctor specializing in human genetics. Apart from that, I’m in
 - Typography 
 - Photography
 - Astronomy
-:::
 
-::: {.g-col-12 .g-col-md-6}
 ## {{< fa solid graduation-cap >}}  Education
 
 - **Specializing in Human Genetics**, since 2019
@@ -45,6 +41,4 @@ I’m a medical doctor specializing in human genetics. Apart from that, I’m in
   *Ludwig-Maximilians-University Munich*
 - **MD Degree / State Examination**, 2017  
   *Technical University Munich*
-:::
-
-:::
+  
