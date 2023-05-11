@@ -1,5 +1,5 @@
 ---
-title: "blog"
+title: ""
 listing:
   contents: posts
   sort: "date desc"
@@ -17,5 +17,4 @@ title-block-banner: false
 comments: false
 code-tools: false
 ---
-
 
