@@ -1,65 +1,87 @@
 ---
-page-layout: full
+page-layout: custom
 comments: false
 ---
 
-<script src="/assets/scripts/node_modules/typeit/dist/index.umd.js"></script>
 <link rel="me" href="https://vis.social/@basepair" />
 <link rel="me" href="https://genomic.social/@basepair" />
 <link rel="me" href="https://scicomm.xyz/@basepair" />
 
 
 ::: {.grid}
+::: {.g-col-10 .g-start-2 .g-col-md-5 .g-start-md-2}
 
-::: {.g-col-12 .g-col-md-10 .g-start-md-2}
-![](assets/images/logo_dynamic_hero.webp)
+::: {.welcome-title}
+Hello there and welcome!
 :::
 
-::: {.g-col-12 .g-col-md-10 .g-start-md-2}
+::: {.welcome-message}
+My name is Christian and I have a passion for clear and appealing data visualizations. 
 
-::: {.h1 #welcome-message-title}
-Hello and welcome to jolly data!
-:::
-
-::: {.h3 #welcome-message-title2}
-<p class="multipleStrings"></p>
+I love to make sense out of complex data, discover patterns and communicate insights. You can read more about me and my background [here](about.html).
 :::
 
 :::
 
+::: {.g-col-10 .g-start-2 .g-col-md-5}
+![](assets/images/logo_dynamic_hero_transparent.png)
+:::
 
-::: {.g-col-12 .g-col-md-4}
+:::
+
+<br><br>
+
+::: {.grid}
+
+
+::: {.g-col-10 .g-start-2 .g-col-md-4 .g-start-md-3}
 <div class="card mb-2">
 <div class="card-body">
-<h5 class="card-title">blog</h5>
-<p class="card-text">I enjoy exploring open datasets and pick up new {{< fa brands r-project >}} and {{< fa brands python >}} tricks on my way.<br>I share what I discover and learn.</p>
-<a href="posts.html" class="btn btn-info stretched-link">Start reading</a>
-</div>
-</div>
-:::
-
-::: {.g-col-12 .g-col-md-4}
-<div class="card mb-2">
-<div class="card-body">
-<h5 class="card-title">data visualization</h5>
-<p class="card-text">A gallery of contributions to dataviz challenges, such as #TidyTuesday or #30DayChartChallenge</p>
+<h5 class="card-title">Data Visualizations</h5>
+<p class="card-text">A collection of charts, infographics and dataviz designs, that I created for previous projects and community-driven data challenges.</p>
 <a href="challenges.html" class="btn btn-warning stretched-link">Browse</a>
 </div>
 </div>
 :::
 
-::: {.g-col-12 .g-col-md-4}
+::: {.g-col-10 .g-start-2 .g-col-md-4}
 <div class="card mb-2">
 <div class="card-body">
-<h5 class="card-title">projects</h5>
-<p class="card-text">A collection of ongoing personal data-endeavors and programming projects.</p><br>
+<h5 class="card-title">Jolly Data Blog</h5>
+<p class="card-text">A blog on the exploration of open data using open source tools,
+such {{< fa brands r-project >}} and {{< fa brands python >}}. I share here, what I learn on my way.</p>
+<a href="posts.html" class="btn btn-info stretched-link">Start reading</a>
+</div>
+</div>
+:::
+
+::: {.g-col-10 .g-start-2 .g-col-md-4 .g-start-md-3}
+<div class="card mb-2">
+<div class="card-body">
+<h5 class="card-title">Projects</h5>
+<p class="card-text">A collection of ongoing data-endeavors, programming projects and {{< fa brands r-project >}} packages.</p>
 <a href="projects.html" class="btn btn-danger stretched-link">Take me there</a>
 </div>
 </div>
 :::
 
+::: {.g-col-10 .g-start-2 .g-col-md-4}
+<div class="card mb-2">
+<div class="card-body">
+<h5 class="card-title">Contact</h5>
+<p class="card-text">Do you want to tell a fascinating datastory or need a dataviz instructor?
+Lat's talk about how I can advance your visual communication!</p>
+<a href="contact.html" class="btn btn-danger stretched-link">LConnect</a>
+</div>
+</div>
 :::
 
 
-<script type="text/plain" cookie-consent="functionality" src="/assets/scripts/welcome.js"></script>
+:::
 
+::: {.welcome-message}
+
+
+
+
+:::
