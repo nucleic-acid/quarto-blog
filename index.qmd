@@ -71,7 +71,7 @@ such {{< fa brands r-project >}} and {{< fa brands python >}}. I share here, wha
 <h5 class="card-title">Contact</h5>
 <p class="card-text">Do you want to tell a fascinating datastory or need a dataviz instructor?
 Lat's talk about how I can advance your visual communication!</p>
-<a href="contact.html" class="btn btn-danger stretched-link">LConnect</a>
+<a href="contact.html" class="btn btn-success stretched-link">Connect</a>
 </div>
 </div>
 :::
