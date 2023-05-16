@@ -1,7 +1,7 @@
 ---
-title: "data viz gallery"
+title: "Gallery"
 subtitle: |
-  A collection of datavisualizations created for challenges such as #TidyTuesday or the #30DayChartChallenge. Others resulted from personal data exploration projects found on this blog. The code can either be found in blog posts or on my github page.
+  A selection of visualizations created for previous projects, dataviz-community challenges such as #TidyTuesday or the #30DayChartChallenge. The code can either be found in blog posts or on my github page.
 page-layout: full
 code-tools: false
 ---
@@ -23,3 +23,26 @@ pixgallery(
 
 ## Comments
 Do you like the visualizations? Seen anything you want to discuss? Leave a comment, I'd be happy to hear it!
+
+<script src="assets/scripts//macy.js"></script>
+<script>
+    var masonry = new Macy({
+        container: '#macy-container',
+        trueOrder: false,
+        waitForImages: true,
+        useOwnImageLoader: false,
+        debug: true,
+        mobileFirst: true,
+        columns: 1,
+        margin: {
+            y: 16,
+            x: '2%',
+        },
+        breakAt: {
+            1200: 6,
+            940: 5,
+            520: 3,
+            400: 2
+        },
+    });
+</script>
