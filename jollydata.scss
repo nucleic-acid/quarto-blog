@@ -1,7 +1,6 @@
 /*-- scss:defaults --*/
 
 // Define fonts
-
 /* archivo-100 - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -203,6 +202,8 @@
        url('assets/fonts/chivo-mono-v6-latin-800italic.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
+
+
 $font-size-root: 13pt !default;
 $headings-font-weight:  700 !default;
 // Code blocks
@@ -213,10 +214,10 @@ $font-family-monospace: 'Chivo Mono', monospace;
 
 // Colors
 
-$red:     #d9534f !default;
-$yellow:  #ffc107 !default;
-$green:   #5cb85c !default;
-$cyan:    #1bc7dc !default;
+$red:     #832232 !default;
+$yellow:  #DE9151 !default;
+$green:   #21897E !default;
+$cyan:    #2C3D55 !default;
 
 $success:       $green !default;
 $info:          $cyan !default;
@@ -242,7 +243,7 @@ p {
 }
 
 .nav-item {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .quarto-title p {
@@ -281,12 +282,30 @@ p {
   font-weight: 200;
 }
 
+// by default (= small screens) do not show the hero image. Only on large screens show the image-div next to the text.
+.welcome-hero {
+  display: none;
+}
+@include media-breakpoint-up(lg) {
+  .welcome-hero {
+    display: block;
+    background-image: url("assets/images/logo_dynamic_hero_transparent.webp");
+    background-size: cover;
+    background-position: center;
+  } 
+  .welcome-hero img {
+
+  }
+}
+
 .card {
+  font-size: 1.2rem;
   border-radius: 0;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 
 .card h5 {
+  font-size: 1.4rem;
   font-weight: 700;
 }
 
