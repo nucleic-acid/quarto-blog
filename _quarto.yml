@@ -19,21 +19,7 @@ website:
         href: posts.html
     right:
       - text: "Contact"
-        menu: 
-        - icon: github
-          href: https://github.com/nucleic-acid
-          text: "Github"
-        - icon: mastodon
-          href: https://scicomm.xyz/@basepair
-          text: "Mastodon"
-        - icon: twitter
-          href: https://twitter.com/c_gebhard
-          text: "Twitter"
-        - text: "{{< ai orcid >}} ORCiD"
-          href: https://orcid.org/0000-0002-8792-565X
-        - icon: rss
-          href: posts.xml
-          text: "RSS feed"
+        href: contact.html
       - text: "About Me"
         href: about.html
   site-url: https://jollydata.blog
