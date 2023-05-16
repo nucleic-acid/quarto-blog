@@ -68,8 +68,8 @@ As the controller, the jolly data blog has implemented numerous technical and or
     D-81541 Munich  
     Germany  
     Phone: +49 1522 3084545  
-    Email: cg_hosting@posteo.de  
-    Website: https://jollydata.blog
+    Email: hello@christiangebhard.com  
+    Website: https://christiangebhard.com
 
 3. Cookies
 
