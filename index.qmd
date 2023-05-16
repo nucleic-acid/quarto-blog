@@ -9,7 +9,7 @@ comments: false
 
 
 ::: {.grid}
-::: {.g-col-10 .g-start-2 .g-col-md-5 .g-start-md-2}
+::: {.g-col-10 .g-start-2 .g-col-sm-10 .g-start-sm-2 .g-col-md-10 .g-start-md-2 .g-col-lg-5 .g-start-lg-2}
 
 ::: {.welcome-title}
 Hello there and welcome!
@@ -18,13 +18,16 @@ Hello there and welcome!
 ::: {.welcome-message}
 My name is Christian and I have a passion for clear and appealing data visualizations. 
 
-I love to make sense out of complex data, discover patterns and communicate insights. You can read more about me and my background [here](about.html).
+Go ahead and check out my previous visualizations or have a look at my blog. You can read more about me [here](about.html).
+
+Do you want me to work on your data or need a data visualization training? [Let's connect](contact.html)!
 :::
 
 :::
 
-::: {.g-col-10 .g-start-2 .g-col-md-5}
-![](assets/images/logo_dynamic_hero_transparent.png)
+::: {.g-col-0 .g-start-col-0 .g-col-lg-5 .welcome-hero}
+
+
 :::
 
 :::
@@ -38,7 +41,7 @@ I love to make sense out of complex data, discover patterns and communicate insi
 <div class="card mb-2">
 <div class="card-body">
 <h5 class="card-title">Data Visualizations</h5>
-<p class="card-text">A collection of charts, infographics and dataviz designs, that I created for previous projects and community-driven data challenges.</p>
+<p class="card-text">A collection of charts, infographics and dataviz designs created for previous projects & community-driven data challenges.</p>
 <a href="challenges.html" class="btn btn-warning stretched-link">Browse</a>
 </div>
 </div>
@@ -49,7 +52,7 @@ I love to make sense out of complex data, discover patterns and communicate insi
 <div class="card-body">
 <h5 class="card-title">Jolly Data Blog</h5>
 <p class="card-text">A blog on the exploration of open data using open source tools,
-such {{< fa brands r-project >}} and {{< fa brands python >}}. I share here, what I learn on my way.</p>
+such {{< fa brands r-project >}} and {{< fa brands python >}}. I share here, what I learned on my way.</p>
 <a href="posts.html" class="btn btn-info stretched-link">Start reading</a>
 </div>
 </div>
@@ -69,8 +72,8 @@ such {{< fa brands r-project >}} and {{< fa brands python >}}. I share here, wha
 <div class="card mb-2">
 <div class="card-body">
 <h5 class="card-title">Contact</h5>
-<p class="card-text">Do you want to tell a fascinating datastory or need a dataviz instructor?
-Lat's talk about how I can advance your visual communication!</p>
+<p class="card-text">Want me for a project or training?
+You can reach me on different channels or directly schedule an exploratory call.</p>
 <a href="contact.html" class="btn btn-success stretched-link">Connect</a>
 </div>
 </div>
