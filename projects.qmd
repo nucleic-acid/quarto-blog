@@ -1,5 +1,5 @@
 ---
-title: "projects"
+title: "Projects"
 comments: false
 page-layout: full
 ---
@@ -15,7 +15,7 @@ page-layout: full
 </div>
 <img src="assets/images/webpea_hex.webp" class="contain" height="400"/>
 <div class="card-body">
-<p class="card-text">Enables R users to export / save plots in the WebP image file format.</p>
+<p class="card-text">Enables R users to easily export / save plots in the WebP image file format.</p>
 <img src="https://github.com/nucleic-acid/webpea/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check" style="max-width: 100%;">
 <br><br>
 <h5>Key features:</h5>
