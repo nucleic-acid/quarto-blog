@@ -1,48 +1,94 @@
 ---
 title: "Gallery"
 subtitle: |
-  A selection of visualizations created for previous projects, dataviz-community challenges such as #TidyTuesday or the #30DayChartChallenge. The code can either be found in blog posts or on my github page.
+  A selection of visualizations created for previous projects, dataviz-community challenges such as #TidyTuesday or the #30DayChartChallenge. The code can either be found in blog posts or on my github page. Click on any image to enlarge.
 page-layout: full
 code-tools: false
+filters:
+   - lightbox
+lightbox: auto
 ---
 
 ::: {.column-screen}
-```{r}
-#| echo: false
-library(pixture)
 
-pixgallery(
-  list.files("assets/challenges_images", 
-             full.names=TRUE),
-  dim="350px",
-  gap = "10px"
-)
+<div id="macy-container">
+![](assets/challenges_images/2022_01_01.webp)
 
-```
+![](assets/challenges_images/2022_01_02.webp)
+
+![](assets/challenges_images/2022_01_03.webp)
+
+![](assets/challenges_images/2022_01_04.webp)
+
+![](assets/challenges_images/2022_01_08.webp)
+
+![](assets/challenges_images/2022_01_09_gif.webp)
+
+![](assets/challenges_images/2022_01_10.webp)
+
+![](assets/challenges_images/2022_01_11.webp)
+
+![](assets/challenges_images/2022_01_12.webp)
+
+![](assets/challenges_images/2022_02_01.webp)
+
+![](assets/challenges_images/2022_02_03.webp)
+
+![](assets/challenges_images/2022_04_rev.webp)
+
+![](assets/challenges_images/2022_05_comp_slope.webp)
+
+![](assets/challenges_images/2022_09_dist_stat.webp)
+
+![](assets/challenges_images/2022_10.webp)
+
+![](assets/challenges_images/2022_11_dist_circ.webp)
+
+![](assets/challenges_images/2022_13_rel_corr.webp)
+
+![](assets/challenges_images/2022_13_rel2.webp)
+
+![](assets/challenges_images/2022_99_05.webp)
+
+![](assets/challenges_images/30DCC_2022-14_3d.webp)
+
+![](assets/challenges_images/30DCC_2022-16_environment.webp)
+
+![](assets/challenges_images/commercial_fishing.webp)
+
+![](assets/challenges_images/voting_bt3.webp)
+
+
+
+
+
+</div>
+
 :::
+
+
 
 ## Comments
 Do you like the visualizations? Seen anything you want to discuss? Leave a comment, I'd be happy to hear it!
 
-<script src="assets/scripts//macy.js"></script>
+<script type='text/javascript' src="/assets/scripts/macy.js"></script>
 <script>
     var masonry = new Macy({
         container: '#macy-container',
         trueOrder: false,
-        waitForImages: true,
-        useOwnImageLoader: false,
-        debug: true,
+        waitForImages: false,
         mobileFirst: true,
-        columns: 1,
-        margin: {
-            y: 16,
+         margin: {
+            y: 25,
             x: '2%',
         },
         breakAt: {
-            1200: 6,
-            940: 5,
-            520: 3,
-            400: 2
+            2400: 6,
+            2000: 5,
+            1400: 4,
+            1000: 3,
+            520: 2,
+            300: 1
         },
     });
 </script>
