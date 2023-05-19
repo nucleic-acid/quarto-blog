@@ -1,5 +1,5 @@
 ---
-title: "Christian Gebhard"
+title: "Hi, I'm Christian Gebhard"
 about:
   template: solana
   image: assets/images/profile-cropped.webp
@@ -22,23 +22,38 @@ page-layout: full
 ---
 
 
-I’m a medical doctor working in human genetics. Apart from that, I’m interested in open and reproducible research, data analysis and data visualization using open and reproducible tools, such as R and Python. This is my personal blog, where I like to share my views on topics, I’m excited about: statistics, exploring open data and the intersection of science communication, data visualization and informative illustrations.
 
+I’m a medical doctor specializing in **human genetics**, where I work with rare & hereditary conditions. In my profession, I enjoy the intersection of **clinical work**, **lab work** and the **communication of scientific / medical matters** to patients and their families.
+
+After learning the statistical / analytic tools needed for my doctorate and scientific work, I continually worked on my **visualization skills** and learned how to design charts to tell a fascinating story while maintaining accuracy in the data itself. I worked with data from many different fields and regularly participated in #TidyTuesday, #30DayChartChallenge & other data visualization challenges.
+
+In science, I value **transparent and reproducible methods** in order to build trust and facilitate accountability/ability to detect and correct potential flaws. For the same reasons, I'm using open and reproducible tools for data visualization, such as **R/ggplot2 and Python**, whenever possible.
+
+::: {.grid}
+::: {.g-col-10 .g-start-2 .g-col-sm-10 .g-start-sm-2 .g-col-md-10 .g-start-md-2 .g-col-lg-6}
+
+## {{< fa solid graduation-cap >}}  Education / Work
+
+- **Specializing in Human Genetics**, since 2019
+- **Clinical Rotation**, 2018 - 2019  
+  *Paediatrics*
+- **Medical Doctorate**, 2018  
+  *Ludwig-Maximilians-University Munich*, [available here](https://edoc.ub.uni-muenchen.de/23299/)
+- **MD Degree / State Examination**, 2017  
+  *Technical University Munich*
+  
+:::
+
+::: {.g-col-10 .g-start-2 .g-col-sm-10 .g-start-sm-2 .g-col-md-10 .g-start-md-2 .g-col-lg-5  .g-start-lg-8}
+  
 ## {{< fa solid heart >}} Interests 
 
 - Human Genetics
 - Data Analysis / Statistics / Data-Visualization
 - Typography 
 - Photography
-- Astronomy
+- Astronomy, Science-Fiction {{< fa solid hand-spock >}}
 
-## {{< fa solid graduation-cap >}}  Education
+:::
 
-- **Specializing in Human Genetics**, since 2019
-- **Clinical Rotation**, 2018 - 2019  
-  *Paediatrics*
-- **Medical Doctorate**, 2018  
-  *Ludwig-Maximilians-University Munich*
-- **MD Degree / State Examination**, 2017  
-  *Technical University Munich*
-  
+:::
