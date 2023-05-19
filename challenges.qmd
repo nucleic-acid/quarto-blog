@@ -78,17 +78,17 @@ Do you like the visualizations? Seen anything you want to discuss? Leave a comme
         trueOrder: false,
         waitForImages: false,
         mobileFirst: true,
-         margin: {
+        margin: {
             y: 25,
             x: '2%',
         },
+        columns: 1,
         breakAt: {
             2400: 6,
             2000: 5,
             1400: 4,
             1000: 3,
-            520: 2,
-            300: 1
+            520: 2
         },
     });
 </script>
