@@ -23,7 +23,7 @@ page-layout: full
 
 
 
-I’m a medical doctor specializing in **human genetics**, where I work with rare & hereditary conditions. In my profession, I enjoy the intersection of **clinical work**, **lab work** and the **communication of scientific / medical matters** to patients and their families.
+I’m a medical doctor located in Munich (Germany), specializing in **human genetics**, where I work with rare & hereditary conditions. In my profession, I enjoy the intersection of **clinical work**, **lab work** and the **communication of scientific / medical matters** to patients and their families.
 
 After learning the statistical / analytic tools needed for my doctorate and scientific work, I continually worked on my **visualization skills** and learned how to design charts to tell a fascinating story while maintaining accuracy in the data itself. I worked with data from many different fields and regularly participated in #TidyTuesday, #30DayChartChallenge & other data visualization challenges.
 
