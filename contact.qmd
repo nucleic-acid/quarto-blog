@@ -14,7 +14,7 @@ comments: false
 <tr><td><p class="card-text">Let's talk about how I can advance your visual communication in a short non-binding video call!</p></td>
 <td><span class="contact-icon">{{< fa regular circle-user >}}</span></td></tr>
 </table>
-<a href="https://meetfox.com/e/christian-gebhard" class="btn btn-secondary stretched-link">Check availability</a>
+<a href="https://meetfox.com/e/christian-gebhard" class="btn btn-success stretched-link">Check availability</a>
 </div>
 </div>
 :::
@@ -27,7 +27,7 @@ comments: false
 <tr><td><p class="card-text">You can send me an e-Mail with your ideas and I'll get back to you shortly</p></td>
 <td><span class="contact-icon">{{< fa regular envelope >}}</span></td></tr>
 </table>
-<a href="mailto:hello@christiangebhard.com" class="btn btn-success stretched-link">Send an E-Mail</a>
+<a href="mailto:hello@christiangebhard.com" class="btn btn-secondary stretched-link">Send an E-Mail</a>
 </div>
 </div>
 :::
