@@ -14,7 +14,7 @@ comments: false
 <tr><td><p class="card-text">Let's talk about how I can advance your visual communication in a short non-binding video call!</p></td>
 <td><span class="contact-icon">{{< fa regular circle-user >}}</span></td></tr>
 </table>
-<a href="https://meetfox.com/e/christian-gebhard" class="btn btn-warning stretched-link">Check availability</a>
+<a href="https://meetfox.com/e/christian-gebhard" class="btn btn-secondary stretched-link">Check availability</a>
 </div>
 </div>
 :::
@@ -27,17 +27,22 @@ comments: false
 <tr><td><p class="card-text">You can send me an e-Mail with your ideas and I'll get back to you shortly</p></td>
 <td><span class="contact-icon">{{< fa regular envelope >}}</span></td></tr>
 </table>
-<a href="mailto:hello@christiangebhard.com" class="btn btn-warning stretched-link">Send an E-Mail</a>
+<a href="mailto:hello@christiangebhard.com" class="btn btn-success stretched-link">Send an E-Mail</a>
 </div>
 </div>
 :::
 
-:::
-
-## Social Media  {{< fa regular comments >}}
-You can find and contact me and my work on the following platforms as well:
+::: {.g-col-12 .g-col-md-6 .g-start-md-4}
+<div class="card mb-2">
+<div class="card-body">
+<h5 class="card-title">Social Media</h5>
+<table>
+<tr><td><p class="card-text">You can find me and my work on the following platforms as well</p></td>
+<td><span class="contact-icon">{{< fa regular comments >}}</span></td></tr>
+</table>
 
 ::: {.grid}
+
 <a href="https://scicomm.xyz/@basepair" class="social-btn">{{< fa brands mastodon >}}</a>
 
 <a href="https://github.com/nucleic-acid" class="social-btn">{{< fa brands github >}}</a>
@@ -45,5 +50,11 @@ You can find and contact me and my work on the following platforms as well:
 <a href="https://www.linkedin.com/in/christian-gebhard-934b24275/" class="social-btn">{{< fa brands linkedin >}}</a>
 
 <a href="https://twitter.com/c_gebhard" class="social-btn">{{< fa brands twitter >}}</a>
+
+:::
+
+</div>
+</div>
+:::
 
 :::

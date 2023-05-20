@@ -25,9 +25,9 @@ page-layout: full
 
 I’m a medical doctor located in Munich (Germany), specializing in **human genetics**, where I work with rare & hereditary conditions. In my profession, I enjoy the intersection of **clinical work**, **lab work** and the **communication of scientific / medical matters** to patients and their families.
 
-After learning the statistical / analytic tools needed for my doctorate and scientific work, I continually worked on my **visualization skills** and learned how to design charts to tell a fascinating story while maintaining accuracy in the data itself. I worked with data from many different fields and regularly participated in #TidyTuesday, #30DayChartChallenge & other data visualization challenges.
+After learning the statistical / analytic tools needed for my doctorate and scientific work, I continually worked on my **visualization skills**. I learned how to design charts, use colors, fonts and annotations to tell a fascinating story while keeping the data-representation accurate. I worked with data from many different fields and regularly participated in #TidyTuesday, #30DayChartChallenge & other data visualization challenges.
 
-In science, I value **transparent and reproducible methods** in order to build trust and facilitate accountability/ability to detect and correct potential flaws. For the same reasons, I'm using open and reproducible tools for data visualization, such as **R/ggplot2 and Python**, whenever possible.
+In science, I value **transparent and reproducible methods** in order to build trust and foster continuous improvement & development. For the same reasons, I'm using open and reproducible tools for data visualization, such as **R/ggplot2 and Python**, whenever possible.
 
 ::: {.grid}
 ::: {.g-col-10 .g-start-2 .g-col-sm-10 .g-start-sm-2 .g-col-md-10 .g-start-md-2 .g-col-lg-6}
@@ -52,7 +52,7 @@ In science, I value **transparent and reproducible methods** in order to build t
 - Data Analysis / Statistics / Data-Visualization
 - Typography 
 - Photography
-- Astronomy, Science-Fiction {{< fa solid hand-spock >}}
+- Science-Fiction {{< fa solid hand-spock >}} and Astronomy in general
 
 :::
 
