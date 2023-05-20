@@ -43,9 +43,7 @@ website:
 highlight-style: arrow
 format:
   html:
-    theme: 
-      light: [litera, jollydata.scss]
-      dark: [superhero, jollydata.scss]
+    theme: [litera, jollydata.scss]
     code-link: true
     code-fold: true
     code-tools: 
