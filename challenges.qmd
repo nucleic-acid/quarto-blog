@@ -32,6 +32,10 @@ lightbox: auto
 
 ![](assets/challenges_images/2022_02_01.webp)
 
+![](assets/challenges_images/timespans.webp)
+
+![](assets/challenges_images/growth.webp)
+
 ![](assets/challenges_images/2022_02_03.webp)
 
 ![](assets/challenges_images/2022_04_rev.webp)
