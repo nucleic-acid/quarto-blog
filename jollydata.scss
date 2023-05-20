@@ -337,3 +337,23 @@ img {
 .contain {
   object-fit: contain;
 }
+
+.icon-sep {
+  display: block;
+  background: $white;
+  width: 100%;
+  height: 0px;
+  margin: auto;
+  display: table;
+  margin-top: -6px;
+  margin-bottom: -6px;
+}
+
+.icon-upper {
+  font-size: 1.73rem;
+  font-weight: 700;
+}
+
+.icon-lower {
+  font-size: 0.91rem;
+}
