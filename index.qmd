@@ -42,7 +42,7 @@ Do you want me to work on your data or need a data visualization training? [Let'
 <div class="card-body">
 <h5 class="card-title">Data Visualizations</h5>
 <p class="card-text">A collection of charts, infographics and dataviz designs created for previous projects & community-driven data challenges.</p>
-<a href="challenges.html" class="btn btn-warning stretched-link">Browse</a>
+<a href="challenges.html" class="btn btn-primary stretched-link">Browse</a>
 </div>
 </div>
 :::
