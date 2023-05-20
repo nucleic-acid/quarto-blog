@@ -7,9 +7,10 @@ project:
     - "assets/scripts/"
     - ".htaccess"
 website:
-  title: "Christian Gebhard"
+  title: "Christian Gebhard - Datavisualization"
   description: "Data Visualization and Information Design"
   navbar:
+    title: "<span class='icon-upper'>Christian Gebhard</span><span class='icon-sep'></span><span class='icon-lower'>DATAVIZ & INFORMATION DESIGN</span>"
     left: 
       - text: "Dataviz"
         href: challenges.html
