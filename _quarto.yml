@@ -31,7 +31,7 @@ website:
   cookie-consent: 
     policy-url: datenschutz.html
   page-footer: 
-    left: Christian A. Gebhard {{< fa regular copyright >}} 2022<br>made with {{< fa heart >}}, {{< fa brands r-project >}}  and [quarto](https://quarto.org)
+    left: Christian A. Gebhard {{< fa regular copyright >}} 2020-2023<br>made with {{< fa heart >}}, {{< fa brands r-project >}}  and [quarto](https://quarto.org)
     right: 
       - text: Impressum
         href: impressum.html
