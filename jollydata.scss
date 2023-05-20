@@ -214,14 +214,19 @@ $font-family-monospace: 'Chivo Mono', monospace;
 
 // Colors
 
-$red:     #832232 !default;
-$yellow:  #DE9151 !default;
-$green:   #21897E !default;
-$cyan:    #2C3D55 !default;
+$blue:    #064789 !default;
+$red:     #D02156 !default;
+$orange:  #f35d32 !default;
+$yellow:  #f1b500 !default;
+$green:   #BAFF29 !default;
+$cyan:    #1BC7DC !default;
 
+$primary:       $blue !default;
+$secondary:     $cyan !default;
+$link-color:    $red !default;
 $success:       $green !default;
 $info:          $cyan !default;
-$warning:       $yellow !default;
+$warning:       $orange !default;
 $danger:        $red !default;
 
 // Button styling
