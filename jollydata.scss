@@ -129,6 +129,25 @@
        url('assets/fonts/archivo-v18-latin-800italic.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
+/* archivo-narrow-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Archivo Narrow';
+  font-style: normal;
+  font-weight: 400;
+  src: url('assets/fonts/archivo-narrow-v29-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+       url('assets/fonts/archivo-narrow-v29-latin-regular.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* archivo-narrow-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Archivo Narrow';
+  font-style: normal;
+  font-weight: 700;
+  src: url('assets/fonts/archivo-narrow-v29-latin-700.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+       url('assets/fonts/archivo-narrow-v29-latin-700.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
 /* chivo-mono-300italic - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -350,10 +369,15 @@ img {
 }
 
 .icon-upper {
-  font-size: 1.73rem;
+  font-family: 'Archivo Narrow';
+  font-size: 1.1rem;
   font-weight: 700;
+  text-align: center;
 }
 
 .icon-lower {
-  font-size: 0.91rem;
+  font-family: 'Archivo Narrow';
+  font-size: 0.85rem;
+  font-weight: 300;
+  text-align: center;
 }

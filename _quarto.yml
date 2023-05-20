@@ -10,7 +10,7 @@ website:
   title: "Christian Gebhard - Datavisualization"
   description: "Data Visualization and Information Design"
   navbar:
-    title: "<span class='icon-upper'>Christian Gebhard</span><span class='icon-sep'></span><span class='icon-lower'>DATAVIZ & INFORMATION DESIGN</span>"
+    title: "<span class='icon-upper'>CHRISTIAN GEBHARD</span><span class='icon-sep'></span><span class='icon-lower'>DATAVISUALIZATION DESIGN</span>"
     left: 
       - text: "Dataviz"
         href: challenges.html
