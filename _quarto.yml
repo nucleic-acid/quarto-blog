@@ -23,7 +23,7 @@ website:
         href: contact.html
       - text: "About Me"
         href: about.html
-  site-url: https://jollydata.blog
+  site-url: https://christiangebhard.com
   twitter-card: true
   open-graph: true
   favicon: assets/images/logo_favicon.png
