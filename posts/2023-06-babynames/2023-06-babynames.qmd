@@ -1,0 +1,265 @@
+---
+title: "Cleaning Babynames"
+subtitle: |
+ In this post I download, clean and tidy open data from the City of Munich regarding baby names. The available datasets have different filename patterns, column names, delimiters, typos and implicitly missing data. I'll use the cleaned data for future posts.
+categories: 
+  - data cleaning
+  - EDA
+  - R
+date: 2023-06-21
+code-fold: true
+image: images/order.webp
+image-alt: "Ten scrabble letters spelling the words 'Order' in the top and 'Chaos' in the lowe part. The letters forming 'Order' are nicely arranged, while the letter spelling 'Chaos' are arranged in a chaotic way."
+citation:
+  type: post-weblog
+---
+
+![Foto by <a href="https://unsplash.com/@brett_jordan?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Brett Jordan</a> on <a href="https://unsplash.com/de/fotos/M3cxjDNiLlQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>](images/order.webp)
+
+## Introduction and Credits
+The [Open Data Portal](https://opendata.muenchen.de) of the City of Munich (Germany) provides all kinds of datasets regarding infrastructure, traffic, economy and demographics. The names given to babies can be found [here](https://opendata.muenchen.de/dataset/vornamen-von-neugeborenen) (credits: Datenquelle: dl-de/by-2-0: Landeshauptstadt München – opendata.muenchen.de).
+
+The data has some issues which I'll address in this post below as preparation for future posts using this dataset.
+
+:::{.callout-tip collapse=true appearance='default' icon=true}
+## Short dictionary for non-German readers
+
+| German | English |
+| --- | --- |
+| Vorname | first name |
+| Anzahl | count |
+| Geschlecht | sex^[as stated by the parents or the clinic when registering a birth] |
+| Jahr | year |
+:::
+
+  
+
+## Reading and Cleaning the Data
+
+```{r packages}
+#| code-fold: true
+#| code-summary: "Libraries used"
+library(tidyverse)
+library(readr)
+library(janitor)
+library(stringr)
+library(stringi)
+library(summarytools)
+```
+
+Unfortunately the files have different naming patterns and use different delim-characters. In addition the year 2015 has a different column name for the first names. Since the file list is rather short, it's quicker to hard-code this than to work out a fancy algorithm...
+
+::: {.column-margin}
+![I really appreciate the open data portal of our city, but there's still some room for improvement [@OpenData München](https://twitter.com/opendata_muc)](images/meme.jpg)
+:::
+
+```{r reading data}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+vornamen_2022 <- read_delim(Sys.glob(here::here("posts", "2023-06-babynames", "original_data", "*2022.csv")), delim = ",") |> 
+  janitor::clean_names() |> 
+  mutate(jahr = 2022)
+
+vornamen_2021 <- read_delim(Sys.glob(here::here("posts", "2023-06-babynames", "original_data", "*2021.csv")), delim = ",") |> 
+  janitor::clean_names() |> 
+  mutate(jahr = 2021)
+
+vornamen_2020 <- read_delim(Sys.glob(here::here("posts", "2023-06-babynames", "original_data", "*2020.csv")), delim = ",") |> 
+  janitor::clean_names() |> 
+  mutate(jahr = 2020)
+
+vornamen_2019 <- read_delim(Sys.glob(here::here("posts", "2023-06-babynames", "original_data", "*2019.csv")), delim = ",") |> 
+  janitor::clean_names() |> 
+  mutate(jahr = 2019)
+
+vornamen_2018 <- read_delim(Sys.glob(here::here("posts", "2023-06-babynames", "original_data", "*2018.csv")), delim = ",") |> 
+  janitor::clean_names() |> 
+  mutate(jahr = 2018)
+
+vornamen_2017 <- read_delim(Sys.glob(here::here("posts", "2023-06-babynames", "original_data", "*2017.csv")), delim = ",") |> 
+  janitor::clean_names() |> 
+  mutate(jahr = 2017)
+
+vornamen_2016 <- read_delim(Sys.glob(here::here("posts", "2023-06-babynames", "original_data", "*2016.csv")), delim = ",") |> 
+  janitor::clean_names() |> 
+  mutate(jahr = 2016)
+
+vornamen_2015 <- read_delim(Sys.glob(here::here("posts", "2023-06-babynames", "original_data", "*2015.csv")), delim = ";") |> 
+  janitor::clean_names() |> 
+  mutate(jahr = 2015) |> 
+  rename(vorname = vornamen)
+
+vornamen_2014 <- read_delim(Sys.glob(here::here("posts", "2023-06-babynames", "original_data", "*2014.csv")), delim = ";") |> 
+  janitor::clean_names() |> 
+  mutate(jahr = 2014)
+
+vornamen_2013 <- read_delim(Sys.glob(here::here("posts", "2023-06-babynames", "original_data", "*2013.csv")), delim = ";") |> 
+  janitor::clean_names() |> 
+  mutate(jahr = 2013)
+
+vornamen_raw <- rbind(
+  vornamen_2013, 
+  vornamen_2014, 
+  vornamen_2015, 
+  vornamen_2016, 
+  vornamen_2017, 
+  vornamen_2018, 
+  vornamen_2019, 
+  vornamen_2020, 
+  vornamen_2021, 
+  vornamen_2022 
+  )
+
+```
+
+In addition, Unicode characters are escaped in the form of e.g. <U+0219> for the letter ș. So we'll clean that with the help of the `{stringi}` package.^[credits to the answer of this [stack overflow question](https://stackoverflow.com/questions/49739800/convert-unicode-to-readable-characters-in-r)]. After that we'll drop 4 lines without name and sex, and 4 others where the name is "+".
+
+```{r unicode}
+vornamen <- vornamen_raw |> 
+  mutate(
+    vorname = stringi::stri_unescape_unicode(   # this function doesn't recognize the <U+1234> escape, so we
+      gsub("<U\\+(....)>", "\\\\u\\1", vorname) # need to replace these with \u1234 as intermediate step
+      ),
+    anzahl = ifelse(anzahl == "4 oder wenniger", "4 oder weniger", anzahl) # there's a typo in ~14k entries...
+  ) |> 
+  drop_na() |> 
+  filter(vorname != "+")
+
+```
+
+Now that this is done, let's have a first look at the head of the cleaned data...
+
+```{r}
+knitr::kable(head(vornamen))
+```
+
+...and a dataframe summary:
+
+:::{.column-page-inset}
+```{r eda-summary}
+#| code-fold: true
+summarytools::dfSummary(vornamen)
+```
+:::
+
+## Imputing Missing Values
+
+For a large part of names (36499), there's no exact count given. It only says that there are 4 or less babies born with this name ("4 oder weniger" in German). Since this affects >80% of distinct name/year combinations, I cannot just drop those. To fill these implicit missing values, I'll impute them.^[Imputations on such a large part of data will obviously introduce some blur compared to the actual data. As more precise data is not publicly available and I'll mostly work on the more frequent names, where exact numbers are available, this is sufficient for me.]
+
+To estimate the frequencies of the rarer names, I assume a roughly exponential distribution with a tendency to more unique names. The following probabilities are used:
+
+```
+n = 1: 0.52
+n = 2: 0.27
+n = 3: 0.14
+n = 4: 0.07
+```
+
+```{r}
+#| code-fold: show
+#| code-summary: Imputation
+
+# count missing values 
+n <- nrow(filter(vornamen, anzahl == "4 oder weniger")) 
+
+
+{
+  # set seed for reproducibility for this step only
+  set.seed(753)
+  
+  vornamen_imputed <- vornamen |> 
+    # impute using the sample() function using the above probabilities
+    mutate(
+      anzahl = as.numeric(ifelse(anzahl == "4 oder weniger", sample(c(1, 2, 3, 4), size = n, replace = TRUE, prob = c(0.52, 0.27, 0.14, 0.07)), anzahl))
+    )
+}
+```
+
+If the estimation/imputation is suitable, then we should come to a total of births similar to what the official birth statisics say.
+The [official reports](https://stadt.muenchen.de/dam/jcr:ac5d08c1-3ad4-4d60-b1af-a8387cede88f/jt230126.pdf) state these numbers for the years 2017-2022 respectively: 17629, 17587, 17509, 17593, 18330 and 16540.
+
+```{r}
+#| code-fold: show
+#| code-summary: Accuracy check
+
+vornamen_diff <- vornamen_imputed |> 
+  uncount(anzahl) |> 
+  group_by(jahr) |> 
+  summarise(estimated = n()) |> 
+  filter(jahr >= 2017) |> 
+  mutate(
+    reference = c(17629, 17587, 17509, 17593, 18330, 16540),
+    difference = reference - estimated,
+    diff_pct = difference / reference *100
+  )
+  
+knitr::kable(vornamen_diff)
+```
+
+The imputation is quite okay, with an RMSE of around `r round(sqrt(mean(vornamen_diff$difference^2)), 2)`. In percent, the (root mean squared) difference is about `r round(sqrt(mean(vornamen_diff$diff_pct^2)), 2)`%, with a maximum of `r round(max(abs(vornamen_diff$diff_pct)), 2)`%, which is acceptable for the purpose of this blog post (and future ones).
+
+
+## (Short) Exploratory Analysis
+
+- There are `r vornamen |> filter(geschlecht == "w") |> distinct(vorname) |> nrow()` distinct female names and `r vornamen |> filter(geschlecht == "m") |> distinct(vorname) |> nrow()` distinct male names.
+- The longest name (that is not a composed name with a "-") is 16 characters long: "Sakthi......avani"
+
+```{r}
+#| include: false
+vornamen |> 
+  distinct(vorname, .keep_all = TRUE) |> 
+  filter(
+    str_detect(vorname, "-", negate = TRUE)
+  ) |> 
+  mutate(
+    length = nchar(vorname)
+  ) |> 
+  arrange(desc(length))
+
+vornamen |> 
+  distinct(vorname, .keep_all = TRUE) |>
+  mutate(
+    length = nchar(vorname)
+  ) |> 
+  arrange(length) |> 
+  filter(length == 2)
+```
+
+- The shortest names are 2 characters long and there are 44 of those.
+- The most common names by year and sex are:
+
+  ```{r}
+  vornamen_imputed |> 
+    group_by(jahr, geschlecht) |> 
+    summarise(anzahl = max(anzahl)) |> 
+    left_join(vornamen_imputed) |> 
+    knitr::kable()
+    
+  ```
+
+:::{.column-page-inset}
+
+
+```{r}
+library(wordcloud2)
+vornamen_wc <- vornamen_imputed |> 
+  distinct(vorname, .keep_all = TRUE) |> 
+  filter(anzahl >= 5) |> 
+  transmute(
+    word = vorname,
+    freq = anzahl
+  )
+
+wordcloud2::wordcloud2(
+  data = vornamen_wc,
+  size = 0.5,
+  color = "random-light",
+  minSize = 7,
+  widgetsize = c("99%", 400)
+)
+
+```
+
+:::
+
