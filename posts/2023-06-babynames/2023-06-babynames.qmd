@@ -240,23 +240,25 @@ vornamen |>
 
 :::{.column-page-inset}
 
+## Wordcloud of the last 10 years
 
 ```{r}
 library(wordcloud2)
 vornamen_wc <- vornamen_imputed |> 
-  distinct(vorname, .keep_all = TRUE) |> 
-  filter(anzahl >= 5) |> 
+  group_by(vorname) |> 
+  summarise(median_anzahl = median(anzahl)) |> 
+  filter(median_anzahl >= 5) |> 
   transmute(
     word = vorname,
-    freq = anzahl
+    freq = median_anzahl
   )
 
 wordcloud2::wordcloud2(
   data = vornamen_wc,
-  size = 0.5,
+  size = 0.4,
   color = "random-light",
   minSize = 7,
-  widgetsize = c("99%", 400)
+  widgetsize = c("99%", 600)
 )
 
 ```
